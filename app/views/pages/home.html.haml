@@ -1,3 +1,9 @@
 %h1 Pages#home
 %p Find me in app/views/pages/home.html.erb
 = link_to 'about', about_path
+-# test simple_form
+.container
+    = simple_form_for :user, url: 'http://google.com' do |f|
+        = f.input :name, label: 'Your name please'
+        = f.input :email, label: 'Your email please'
+        = f.button :submit, 'Submit', class: 'btn btn-primary'
