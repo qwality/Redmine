@@ -4,6 +4,7 @@ ruby "3.3.0"
 
 gem "haml"
 gem 'simple_form'
+gem 'devise'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
