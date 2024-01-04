@@ -1,11 +1,24 @@
 class UsersController < ApplicationController
+    def create
+        puts 'create user'
+        @user = User.new(user_params)
+        @user.password = 'password'
+
+        if @user.save
+            redirect_to root_path, notice: 'User was successfully created.'
+        else
+            puts @user.errors.full_messages
+            redirect_to root_path, alert: 'There was an error creating the user.'
+        end
+    end
+
     def update
       @user = User.find(params[:id])
   
       if @user.update(user_params)
         redirect_to root_path, notice: 'User was successfully updated.'
       else
-        render :edit
+        redirect_to root_path, alert: 'There was an error updating the user.'
       end
     end
   
@@ -16,7 +29,7 @@ class UsersController < ApplicationController
       if @user.destroyed?
         redirect_to root_path, notice: 'User was successfully deleted.'
       else
-        render :edit
+        redirect_to root_path, alert: 'There was an error deleting the user.'
       end
     end
   

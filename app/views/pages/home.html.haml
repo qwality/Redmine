@@ -1,55 +1,54 @@
 
 .container.mt-3
-  %h1 Pages#home
-  %p Find me in app/views/pages/home.html.erb
-  = link_to 'about', about_path
+    %h1 Pages#home
+    %p Find me in app/views/pages/home.html.erb
+    = link_to 'about', about_path
 
-  %h2 users:
+    %h2 users:
 
-  .container
-    = simple_form_for(User.new, url: users_path, html: { method: :post }) do |f|
-      = f.error_notification
+    .container
+        = simple_form_for(User.new, url: custom_users_path, html: { method: :post }) do |f|
+            = f.error_notification
 
-      .form-inputs.row.gx-2.border-bottom.py-2
-        .col
-          = f.input :email, required: true, label: false, input_html: {class: 'border-0 border-end'}
-        .col
-          = f.input :first_name, required: true, label: false, input_html: {class: 'border-0 border-end'}
-        .col
-          = f.input :last_name, required: true, label: false, input_html: {class: 'border-0 border-end'}
-        .col
-          = f.input :address, required: false, label: false, input_html: {class: 'border-0 border-end'}
-        .col
-          = f.input :password, required: true, label: false, input_html: {class: 'border-0 border-end'}
-        .col
-          = f.input :password_confirmation, required: true, label: false, input_html: {class: 'border-0 border-end'}
+            .form-inputs.row.gx-2.border-bottom.py-2
+                .col create new user:
+                .col= f.input :email, required: true, label: false
+                .col= f.input :first_name, required: true, label: false
+                .col= f.input :last_name, required: true, label: false
+                .col= f.input :address, required: false, label: false
+                -# .col
+                -#   = f.input :password, required: true, label: false, input_html: {class: 'border-0 border-end'}
+                -# .col
+                -#   = f.input :password_confirmation, required: true, label: false, input_html: {class: 'border-0 border-end'}
 
-        .form-actions.col
-          = f.button :submit, "Create", class: "btn btn-primary"
-    
-    - User.all.each do |user|
-      = simple_form_for(user, as: :user, url: user_path(user), html: { method: :put }) do |f|
-        = f.error_notification
+                .form-actions.col
+                    = f.button :submit, "Create", class: "btn btn-primary"
+        
+        - User.all.each do |user|
+            .row
+                .col-11
+                    = simple_form_for(user, as: :user, url: user_path(user), html: { method: :put }) do |f|
+                        = f.error_notification
 
-        .form-inputs.row.gx-2.border-bottom.py-2
-          .col
-            = image_tag user.avatar.url || 'default_avatar.png', class: 'rounded-circle', style: 'width: 2rem; height: 2rem;'
-            - if user.admin
-              %span.badge.bg-primary.mx-2 Admin
-            - if user == current_user
-              %span.badge.bg-success.mx-2 Current
-          .col= f.input :email, required: true, label: false, input_html: {class: 'border-0 border-end'}
-          .col= f.input :first_name, required: true, label: false, input_html: {class: 'border-0 border-end'}
-          .col= f.input :last_name, required: true, label: false, input_html: {class: 'border-0 border-end'}
-          .col= f.input :address, required: false, label: false, input_html: {class: 'border-0 border-end'}
+                        .form-inputs.row.gx-2.border-bottom.py-2
+                            .col
+                                = image_tag user.avatar.url || 'default_avatar.png', class: 'rounded-circle', style: 'width: 2rem; height: 2rem;'
+                                - if user.admin
+                                    %span.badge.bg-primary.mx-2 Admin
+                                - if user == current_user
+                                    %span.badge.bg-success.mx-2 Current
+                            .col= f.input :email, required: true, label: false, input_html: {class: 'border-0 border-end'}
+                            .col= f.input :first_name, required: true, label: false, input_html: {class: 'border-0 border-end'}
+                            .col= f.input :last_name, required: true, label: false, input_html: {class: 'border-0 border-end'}
+                            .col= f.input :address, required: false, label: false, input_html: {class: 'border-0 border-end'}
 
-          .form-actions.col
-            = f.button :submit, "Update", class: "btn btn-primary"
+                            .form-actions.col
+                                = f.button :submit, "Update", class: "btn btn-primary"
 
-          .col
-            = button_to "Delete", user_path(user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"
+                            -# .col
+                            -#     = button_to "Delete", user_path(user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"
 
-      .col= button_to "Delete", user_path(user), data: { confirm: "Are you sure?", turbo_method: :delete }, method: :delete, class: "btn btn-danger"
+                .col.py-2= button_to "Delete", user_path(user), data: { confirm: "Are you sure?", turbo_method: :delete }, method: :delete, class: "btn btn-danger"
 
 
 
