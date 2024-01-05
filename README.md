@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+je implementovana manipulace s usery i jejich login a registrace
+je mozno pridavat, mazat a editovat usery (pri pridani noveho usera pres view users se nastavi heslo na 'password', jinak pri registraci si heslo nastavuje uzivatel)
+momentalne neni implementovana jakakoli bezpecnost (pridavat a mazat usery muze kdokoli)
+avatari jsou ulozeni tak ze k nim ma take pristup kdokoli (nevim jestli je to tak spravne)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Screenshot Users](screenshot_users.png)
