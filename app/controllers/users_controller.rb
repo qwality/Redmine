@@ -1,13 +1,22 @@
 class UsersController < ApplicationController
-    def create
-        puts 'create user'
+  
+  before_action :authenticate_user!
+
+  def authenticate_user!
+    if !current_user&.admin
+      redirect_to root_path, alert: 'You must be admin to access this endpoint.'
+    end
+  end
+  
+  def create
+        # puts current_user.email
         @user = User.new(user_params)
         @user.password = 'password'
 
         if @user.save
             redirect_to root_path, notice: 'User was successfully created.'
         else
-            puts @user.errors.full_messages
+            # puts @user.errors.full_messages
             redirect_to root_path, alert: 'There was an error creating the user.'
         end
     end
