@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def authenticate_user!
-    if !current_user&.admin
+    unless current_user&.is_admin?
       redirect_to root_path, alert: 'You must be admin to access this endpoint.'
     end
   end
