@@ -1,0 +1,26 @@
+.container.mt-3
+  %h1 Projects
+
+  .container
+    %table
+      %thead
+        %tr
+          %th name
+          %th description
+          %th created_at
+          %th tasks count
+
+      %tbody
+        - @projects.each do |project|
+          %tr
+            %td= project.name
+            %td= project.description
+            %td= project.created_at
+            %td= project.tasks.count
+            %td= link_to 'Show', project
+            %td= link_to 'Edit', edit_project_path(project)
+            %td= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }
+
+    %br
+
+    = link_to 'New Project', new_project_path

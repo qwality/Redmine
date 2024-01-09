@@ -3,6 +3,7 @@ source "https://rubygems.org"
 ruby "3.3.0"
 
 gem "haml"
+gem 'haml-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'carrierwave'
