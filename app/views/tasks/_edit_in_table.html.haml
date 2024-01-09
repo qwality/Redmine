@@ -1,0 +1,9 @@
+
+%tr
+  =simple_form_for(task, :html => {method: :put }) do |f|
+    %td= f.input :name, label: false, input_html: {class: 'border-0 border-end'}
+    %td= f.input :description, label: false, input_html: {class: 'border-0 border-end'}
+    %td= f.select :user_id, options_for_select(User.all.map{|u| [u.email, u.id]}, task.user_id), label: false, input_html: {class: 'border-0 border-end'}
+    %td= f.input :state, label: false, input_html: {class: 'border-0 border-end'}
+    %td= f.submit 'Update', class: 'btn btn-primary'
+    -# %td= f.select :user_id, options_for_select(User.all.map{|u| [u.email, u.id]}, @task.user_id), label: false, input_html: {class: 'border-0 border-end'}

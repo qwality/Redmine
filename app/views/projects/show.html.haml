@@ -18,14 +18,15 @@
 
     %tbody
       -@project.tasks.each do |task|
-        %tr
-          %td=task.name
-          %td=task.description
-          %td=task.user.email
-          %td=task.state
-          %td=link_to 'Show', task
-          %td=link_to 'Edit', edit_task_path(task)
-          %td=link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
+        =render 'tasks/edit_in_table', task: task
+        -# %tr
+        -#   %td=task.name
+        -#   %td=task.description
+        -#   %td=task.user.email
+        -#   %td=task.state
+        -#   %td=link_to 'Show', task
+        -#   %td=link_to 'Edit', edit_task_path(task)
+        -#   %td=link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
 
   = link_to 'Edit', edit_project_path(@project)
   \|
