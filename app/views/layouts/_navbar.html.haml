@@ -2,22 +2,28 @@
   .container-fluid
     %div
       %a.navbar-brand{ href: '/' } Nazev aplikace
-      current user:
-      - if current_user
-        = current_user.email
-        - if current_user.avatar?
-          = image_tag current_user.avatar.url, class: 'rounded-circle', style: 'width: 2rem; height: 2rem;'
-          - if current_user.admin
-            %span.badge.bg-primary.mx-2 Admin
-      - else
-        = 'No user'
+      %span.navbar-text.mx-4
+        - if current_user
+          = current_user.email
+          - if current_user.avatar?
+            = image_tag current_user.avatar.url, class: 'rounded-circle', style: 'width: 2rem; height: 2rem;'
+            - if current_user.admin
+              %span.badge.bg-primary.mx-2 Admin
+        - else
+          = 'No user signed in'
 
     %button.navbar-toggler{ type: 'button', 'data-bs-toggle': 'collapse', 'data-bs-target': '#navbarSupportedContent', 'aria-controls': 'navbarSupportedContent', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' }
       %span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
       %ul.navbar-nav.me-auto.mb-2.mb-lg-0
         %li.nav-item
-          %a.nav-link{ href: '#' } Link
+          = link_to 'Home', root_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'About', about_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'Projects', projects_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'Users_(nefunkcni)', users_path, class: 'nav-link'
       %ul.navbar-nav
         - if current_user
           %li.nav-item= link_to 'Edit Account', edit_user_registration_path, class: 'nav-link'
