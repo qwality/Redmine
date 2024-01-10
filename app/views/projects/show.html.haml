@@ -18,7 +18,8 @@
 
     %tbody
       -@project.tasks.each do |task|
-        =render 'tasks/edit_in_table', task: task
+        =render 'tasks/show_in_table', task: task
+        -# =render 'tasks/edit_in_table', task: task
         -# %tr
         -#   %td=task.name
         -#   %td=task.description

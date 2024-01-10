@@ -57,6 +57,22 @@ class TasksController < ApplicationController
     end
   end
 
+  def show_in_table
+    @task = Task.find(params[:id])
+
+    respond_to do |format|
+      format.js {render partial: 'tasks/show_in_table', locals: {task: @task}}
+    end
+  end
+
+  def edit_in_table
+    @task = Task.find(params[:id])
+
+    respond_to do |format|
+      format.html {render partial: 'tasks/edit_in_table', locals: {task: @task}}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
