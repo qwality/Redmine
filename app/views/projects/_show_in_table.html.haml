@@ -1,0 +1,15 @@
+.row.mb-3{ id: "project_#{project.id}" }
+  .col.border-end.border-bottom= link_to project.name, project
+  .col.border-end.border-bottom= project.description
+  .col.border-end.border-bottom= project.created_at
+  .col.border-end.border-bottom= project.tasks.count
+  .col
+    %button{  'class': 'btn btn-primary',
+              'hx-target': "#project_#{project.id}",
+              'hx-get': edit_in_table_project_path(project),
+              'hx-trigger': 'click',
+              'hx-headers': "{ 'X-CSRF-Token': '#{form_authenticity_token}' }",
+              'hx-swap': 'outerHTML'
+    }
+      %span.m-2 Edit
+      %i.bi.bi-lock

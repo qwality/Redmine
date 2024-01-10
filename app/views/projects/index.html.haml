@@ -1,29 +1,34 @@
-.container.mt-3
-  %h1 Projects
+.container
+  %h2 Projects
   %h4 todo:
   %ul
-    %li je treba to predelat na grid a implementovat stejne jako u tasku
+    %li rekl bych ze tady to mame implementovane vsechno
+
+  %button#new-project-button.btn.btn-primary{
+  }
+    Create new project
+    %i.bi.bi-plus
+
+  :javascript
+    $(document).ready(() => {
+      $('#new-project-row').hide();
+
+      $('#new-project-button').click(function() {
+        $('#new-project-row').toggle();
+      });
+    })
 
   .container
-    %table
-      %thead
-        %tr
-          %th name
-          %th description
-          %th created_at
-          %th tasks count
+    .row.mb-4
+      .col.h4 Name
+      .col.h4 Description
+      .col.h4 Created at
+      .col.h4 Tasks count
+      .col
 
-      %tbody
-        - @projects.each do |project|
-          %tr
-            %td= project.name
-            %td= project.description
-            %td= project.created_at
-            %td= project.tasks.count
-            %td= link_to 'Show', project
-            %td= link_to 'Edit', edit_project_path(project)
-            %td= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }
+    #new-project-row
+      =render 'projects/new_in_table'
+    -@projects.each do |project|
+      =render 'projects/show_in_table', project: project
 
-    %br
-
-    = link_to 'New Project', new_project_path
+    = link_to 'Back', root_path

@@ -1,0 +1,17 @@
+= simple_form_for(project,
+                  url: show_in_table_update_project_path(project),
+                  html: { id: "project_#{project.id}",
+                          class: 'row',
+                          method: :put,
+                          'hx-swap': 'outerHTML',
+                          'hx-put': show_in_table_update_project_path(project)}) do |f|
+  .col= f.input :name, label: false, input_html: {class: ''}
+  .col= f.input :description, label: false, input_html: {class: '', style: 'height: 1rem'}
+  .col
+  .col
+  .col
+    = button_tag type: 'submit', class: 'btn btn-primary' do
+      %span.m-2 Update
+      %i.bi.bi-unlock
+
+

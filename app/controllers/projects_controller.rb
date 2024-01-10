@@ -57,6 +57,42 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def show_in_table
+    @project = Project.find(params[:id])
+
+    respond_to do |format|
+      format.html { render partial: 'projects/show_in_table', locals: {project: @project} }
+    end
+  end
+
+  def edit_in_table
+    @project = Project.find(params[:id])
+
+    respond_to do |format|
+      format.html { render partial: 'projects/edit_in_table', locals: {project: @project} }
+    end
+  end
+
+  def new_in_table
+    @project = Project.new
+
+    respond_to do |format|
+      format.html { render partial: 'projects/new_in_table', locals: {project: @project} }
+    end
+  end
+
+  def show_in_table_update
+    @project = Project.find(params[:id])
+
+    respond_to do |format|
+      if @project.update(project_params)
+        format.html { render partial: 'projects/show_in_table', locals: {project: @project}, notice: "Project was successfully updated." }
+      else
+        format.html { render partial: 'projects/edit_in_table', locals: {project: @project}, notice: "Project was not! successfully updated." }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project

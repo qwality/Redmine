@@ -9,14 +9,15 @@
   %h2 Tasks:
   %button#new-task-button.btn.btn-primary{
   }
+    Create new task
     %i.bi.bi-plus
 
   :javascript
     $(document).ready(() => {
-      $('.new-task-row').hide();
+      $('#new-task-row').hide();
 
       $('#new-task-button').click(function() {
-        $('.new-task-row').toggle();
+        $('#new-task-row').toggle();
       });
     })
 
@@ -28,7 +29,7 @@
       .col.h4  State
       .col
 
-    .new-task-row
+    #new-task-row
       =render 'tasks/new_in_table', project: @project
     -@project.tasks.each do |task|
       =render 'tasks/show_in_table', task: task

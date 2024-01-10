@@ -86,10 +86,10 @@ class TasksController < ApplicationController
 
   def show_in_table_update
     @task = Task.find(params[:id])
-    puts "...................................#{@task&.name}"
+    # puts "...................................#{@task&.name}"
     respond_to do |format|
       if @task.update(task_params)
-        puts "-----------------------------true"
+        # puts "-----------------------------true"
         format.html { render partial: 'tasks/show_in_table', locals: {task: @task}, notice: "Task was successfully updated." }
       else
         format.html { render partial: 'tasks/show_in_table', locals: {task: @task}, notice: "Task was not! successfully updated." }

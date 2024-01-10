@@ -1,0 +1,9 @@
+=simple_form_for(Project.new, :html => {method: :post, class: 'row' }) do |f|
+  .col= f.input :name, required: true, label: false, input_html: {class: ''}
+  .col= f.input :description, label: false, input_html: {class: '', style: 'height: 1rem'}
+  .col
+  .col
+  .col
+    = button_tag type: 'submit', class: 'btn btn-primary' do
+      %span.m-2 Create
+      %i.bi.bi-plus
