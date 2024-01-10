@@ -7,19 +7,31 @@
   %p=@project.description
 
   %h2 Tasks:
+  %button#new-task-button.btn.btn-primary{
+  }
+    %i.bi.bi-plus
 
-  %table
-    %thead
-      %tr
-        %th name
-        %th description
-        %th resitel
-        %th state
+  :javascript
+    $(document).ready(() => {
+      $('.new-task-row').hide();
 
-    %tbody
+      $('#new-task-button').click(function() {
+        $('.new-task-row').toggle();
+      });
+    })
+
+  .container
+    .row.mb-4
+      .col.h4  Name
+      .col.h4  Description
+      .col.h4  User
+      .col.h4  State
+      .col
+
+    .new-task-row
       =render 'tasks/new_in_table', project: @project
-      -@project.tasks.each do |task|
-        =render 'tasks/show_in_table', task: task
+    -@project.tasks.each do |task|
+      =render 'tasks/show_in_table', task: task
 
   = link_to 'Edit', edit_project_path(@project)
   \|

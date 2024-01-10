@@ -36,10 +36,14 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
+    # puts 'updating....................'
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to task_url(@task), notice: "Task was successfully updated." }
-        format.json { render :show, status: :ok, location: @task }
+
+        # flash[:notice] = 'Task was successfully updated.'
+        format.html { head :ok}
+        # format.html { redirect_to task_url(@task), notice: "Task was successfully updated." }
+        # format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -61,7 +65,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     respond_to do |format|
-      format.js {render partial: 'tasks/show_in_table', locals: {task: @task}}
+      format.html {render partial: 'tasks/show_in_table', locals: {task: @task}}
     end
   end
 
@@ -70,6 +74,26 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.html {render partial: 'tasks/edit_in_table', locals: {task: @task}}
+    end
+  end
+
+  def new_in_table
+    @task = Task.new
+    respond_to do |format|
+      format.html {render partial: 'tasks/new_in_table', locals: {task: @task}}
+    end
+  end
+
+  def show_in_table_update
+    @task = Task.find(params[:id])
+    puts "...................................#{@task&.name}"
+    respond_to do |format|
+      if @task.update(task_params)
+        puts "-----------------------------true"
+        format.html { render partial: 'tasks/show_in_table', locals: {task: @task}, notice: "Task was successfully updated." }
+      else
+        format.html { render partial: 'tasks/show_in_table', locals: {task: @task}, notice: "Task was not! successfully updated." }
+      end
     end
   end
 

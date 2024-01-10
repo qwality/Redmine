@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     member do
       get :show_in_table
       get :edit_in_table
+      get :new_in_table
+      put :show_in_table_update
     end
   end
   # get 'pages/home'

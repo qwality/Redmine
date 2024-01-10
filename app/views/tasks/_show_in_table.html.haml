@@ -1,15 +1,15 @@
-%tr{ id: "task_#{task.id}" }
-  %td= task.name
-  %td= task.description
-  %td= task.user.email
-  %td= task.state
-  %td
-    %button{
-      'class': 'btn btn-primary',
-      'hx-target': "#task_#{task.id}",
-      'hx-get': edit_in_table_task_path(task),
-      'hx-trigger': 'click',
-      'hx-headers': "{ 'X-CSRF-Token': '#{form_authenticity_token}' }",
-      'hx-swap': 'outerHTML'
+.row.mb-3{ id: "task_#{task.id}" }
+  .col.border-end.border-bottom= task.name
+  .col.border-end.border-bottom= task.description
+  .col.border-end.border-bottom= task.user.email
+  .col.border-end.border-bottom= task.state
+  .col
+    %button{  'class': 'btn btn-primary',
+              'hx-target': "#task_#{task.id}",
+              'hx-get': edit_in_table_task_path(task),
+              'hx-trigger': 'click',
+              'hx-headers': "{ 'X-CSRF-Token': '#{form_authenticity_token}' }",
+              'hx-swap': 'outerHTML'
     }
-      Edit
+      %span.m-2 Edit
+      %i.bi.bi-lock
