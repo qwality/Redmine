@@ -4,5 +4,12 @@
   %td= task.user.email
   %td= task.state
   %td
-    %button{'class': 'btn btn-primary', 'hx-target': "#task_#{task.id}", 'hx-get': edit_in_table_task_path(task), 'hx-trigger': 'click', 'hx-headers': "{ 'X-CSRF-Token': '#{form_authenticity_token}' }", 'hx-swap': 'outerHTML'}
+    %button{
+      'class': 'btn btn-primary',
+      'hx-target': "#task_#{task.id}",
+      'hx-get': edit_in_table_task_path(task),
+      'hx-trigger': 'click',
+      'hx-headers': "{ 'X-CSRF-Token': '#{form_authenticity_token}' }",
+      'hx-swap': 'outerHTML'
+    }
       Edit

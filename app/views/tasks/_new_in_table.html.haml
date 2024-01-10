@@ -1,0 +1,7 @@
+%tr
+  =simple_form_for(Task.new, :html => {method: :post }) do |f|
+    = f.hidden_field :project_id, value: project.id
+    %td= f.input :name, required: true, label: false, input_html: {class: 'border-0 border-end'}
+    %td= f.input :description, label: false, input_html: {class: 'border-0 border-end'}
+    %td= f.select :user_id, options_for_select(User.all.map{|u| [u.email, u.id]}), label: false, input_html: {class: 'bg-primary form-select'}
+    %td= f.submit 'Create', class: 'btn btn-primary'
