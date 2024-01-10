@@ -1,5 +1,5 @@
 .row.mb-3{ id: "task_#{task.id}" }
-  .col.border-end.border-bottom= task.name
+  .col.border-end.border-bottom= link_to task.name, task
   .col.border-end.border-bottom= task.description
   .col.border-end.border-bottom= task.user.email
   .col.border-end.border-bottom= task.state
