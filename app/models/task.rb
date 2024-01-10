@@ -1,4 +1,7 @@
 class Task < ApplicationRecord
+
+  enum state: ['New', 'In progress', 'Waiting for client', 'Resolved']
+
   belongs_to :user
   belongs_to :project
 
