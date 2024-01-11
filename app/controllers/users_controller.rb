@@ -17,37 +17,26 @@ class UsersController < ApplicationController
   
   def show_in_table
     @user = User.find(params[:id])
-    
-    respond_to do |format|
-      format.html { render partial: 'users/show_in_table', locals: { user: @user } }
-    end
+    render partial: 'users/show_in_table', locals: { user: @user }
   end
   
   def edit_in_table
     @user = User.find(params[:id])
-    
-    respond_to do |format|
-      format.html { render partial: 'users/edit_in_table', locals: { user: @user } }
-    end
+    render partial: 'users/edit_in_table', locals: { user: @user }
   end
   
   def new_in_table
     @user = User.new
-    
-    respond_to do |format|
-      format.html { render partial: 'users/new_in_table', locals: { user: @user } }
-    end
+    render partial: 'users/new_in_table', locals: { user: @user }
   end
   
   def show_in_table_update
     @user = User.find(params[:id])
-    
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { render partial: 'users/show_in_table', locals: { user: @user }, notice: 'User was successfully updated.' }
-      else
-        format.html { render partial: 'users/edit_in_table', locals: { user: @user }, alert: 'There was an error updating the user.' }
-      end
+
+    if @user.update(user_params)
+      render partial: 'users/show_in_table', locals: { user: @user }
+    else
+      render partial: 'users/edit_in_table', locals: { user: @user }
     end
   end
   
@@ -80,10 +69,11 @@ class UsersController < ApplicationController
     @user.destroy
 
     if @user.destroyed?
-      redirect_to root_path, notice: 'User was successfully deleted.'
+      flash[:success] = 'User was successfully deleted.'
     else
-      redirect_to root_path, alert: 'There was an error deleting the user.'
+      flash[:alert] = 'There was an error deleting the user.'
     end
+    redirect_to users_path
   end
   
   private

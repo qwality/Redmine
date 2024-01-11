@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     end
   end
   # get 'pages/home'
-  post '/custom_users', to: 'users#create', as: 'custom_users'
+  # post '/custom_users', to: 'users#create', as: 'custom_users'
   get 'about', to: 'pages#about'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
