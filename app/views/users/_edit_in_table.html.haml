@@ -1,0 +1,18 @@
+= simple_form_for(user,
+                  url: show_in_table_update_user_path(user),
+                  html: { id: "user_#{user.id}",
+                          class: 'row',
+                          method: :put,
+                          'hx-swap': 'outerHTML',
+                          'hx-put': show_in_table_update_user_path(user)}) do |f|
+  .col
+  .col= f.input :email, label: false, input_html: {class: ''}
+  .col= f.input :first_name, label: false, input_html: {class: ''}
+  .col= f.input :last_name, label: false, input_html: {class: ''}
+  .col= f.input :address, label: false, input_html: {class: ''}
+  .col
+    = button_tag type: 'submit', class: 'btn btn-primary' do
+      %span.m-2 Update
+      %i.bi.bi-unlock
+
+

@@ -1,22 +1,5 @@
 .container
   %h2 Projects
-  %h4 todo:
-  %ul
-    %li rekl bych ze tady to mame implementovane vsechno
-
-  %button#new-project-button.btn.btn-primary{
-  }
-    Create new project
-    %i.bi.bi-plus
-
-  :javascript
-    $(document).ready(() => {
-      $('#new-project-row').hide();
-
-      $('#new-project-button').click(() => {
-        $('#new-project-row').toggle();
-      });
-    })
 
   .container
     .row.mb-4
@@ -25,6 +8,9 @@
       .col.h4 Created at
       .col.h4 Tasks count
       .col
+        %button#new-project-button.btn.btn-primary
+          New project
+          %i.bi.bi-plus
 
     #new-project-row
       =render 'projects/new_in_table'
@@ -32,3 +18,12 @@
       =render 'projects/show_in_table', project: project
 
     = link_to 'Back', root_path
+
+:javascript
+  $(document).ready(() => {
+    $('#new-project-row').hide();
+
+    $('#new-project-button').click(() => {
+      $('#new-project-row').toggle();
+    });
+  })

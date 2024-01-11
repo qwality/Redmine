@@ -7,12 +7,48 @@ class UsersController < ApplicationController
 
   def authenticate_user!
     unless current_user&.is_admin? or action_whitelist.include?(action_name)
-      redirect_to root_path, alert: "You must be admin to access #{action_name}"
+      redirect_back(fallback_location: root_path, alert: "You must be admin to access #{action_name}")
     end
   end
 
   def index
     @users = User.all
+  end
+  
+  def show_in_table
+    @user = User.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render partial: 'users/show_in_table', locals: { user: @user } }
+    end
+  end
+  
+  def edit_in_table
+    @user = User.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render partial: 'users/edit_in_table', locals: { user: @user } }
+    end
+  end
+  
+  def new_in_table
+    @user = User.new
+    
+    respond_to do |format|
+      format.html { render partial: 'users/new_in_table', locals: { user: @user } }
+    end
+  end
+  
+  def show_in_table_update
+    @user = User.find(params[:id])
+    
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { render partial: 'users/show_in_table', locals: { user: @user }, notice: 'User was successfully updated.' }
+      else
+        format.html { render partial: 'users/edit_in_table', locals: { user: @user }, alert: 'There was an error updating the user.' }
+      end
+    end
   end
   
   def create
