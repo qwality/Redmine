@@ -56,11 +56,13 @@ class UsersController < ApplicationController
     @user.password = 'password'
 
     if @user.save
-      redirect_to root_path, notice: 'User was successfully created.'
+      flash[:success] = 'User was successfully created.'
+
     else
-      # puts @user.errors.full_messages
-      redirect_to root_path, alert: 'There was an error creating the user.'
+      flash[:alert] = 'There was an error creating the user.'
     end
+
+    redirect_to users_path
   end
 
   def update

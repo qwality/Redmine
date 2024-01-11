@@ -18,12 +18,20 @@
     %header
       = render "layouts/navbar"
       - if flash[:notice]
-        .alert.alert-success.alert-dismissible.fade.show.mb-0{ role: 'alert' }
+        .alert.alert-primary.alert-dismissible.fade.show.mb-0{ role: 'alert' }
           = flash[:notice]
           %button.btn-close{ type: 'button', 'data-bs-dismiss': 'alert', 'aria-label': 'Close' }
       - if flash[:alert]
         .alert.alert-warning.alert-dismissible.fade.show.mb-0{ role: 'alert' }
           = flash[:alert]
+          %button.btn-close{ type: 'button', 'data-bs-dismiss': 'alert', 'aria-label': 'Close' }
+      - if flash[:error]
+        .alert.alert-danger.alert-dismissible.fade.show.mb-0{ role: 'alert' }
+          = flash[:error]
+          %button.btn-close{ type: 'button', 'data-bs-dismiss': 'alert', 'aria-label': 'Close' }
+      - if flash[:success]
+        .alert.alert-success.alert-dismissible.fade.show.mb-0{ role: 'alert' }
+          = flash[:success]
           %button.btn-close{ type: 'button', 'data-bs-dismiss': 'alert', 'aria-label': 'Close' }
 
     %main

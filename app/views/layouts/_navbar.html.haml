@@ -24,6 +24,9 @@
           = link_to 'Projects', projects_path, class: 'nav-link text-decoration-underline'
         %li.nav-item
           = link_to 'Users', users_path, class: 'nav-link text-decoration-underline'
+        -# =flash.count
+        -# -flash.each do |name, msg|
+        -#   = content_tag :div, msg, class: "alert alert-#{name}"
       %ul.navbar-nav
         - if current_user
           %li.nav-item= link_to 'Edit Account', edit_user_registration_path, class: 'nav-link'

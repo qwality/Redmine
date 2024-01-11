@@ -1,6 +1,14 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
 
+  helper_method :state_badge
+
+  # @param [Integer] state
+  # @return [String]
+  def state_badge(state)
+    ['badge bg-primary', 'badge bg-warning', 'badge bg-danger', 'badge bg-success'][state]
+  end
+
   # GET /tasks or /tasks.json
   def index
     @tasks = Task.all
@@ -22,21 +30,18 @@ class TasksController < ApplicationController
   # POST /tasks or /tasks.json
   def create
     @task = Task.new(task_params)
+    project_id = @task.project_id
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.save
+      flash[:success] = 'Task was successfully created.'
+    else
+      flash[:alert] = 'Task was not created.'
     end
+    redirect_to project_url(project_id)
   end
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
-    # puts 'updating....................'
     respond_to do |format|
       if @task.update(task_params)
 
@@ -53,47 +58,35 @@ class TasksController < ApplicationController
 
   # DELETE /tasks/1 or /tasks/1.json
   def destroy
+
+    project_id = @task.project_id
     @task.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    flash[:success] = 'Task was successfully destroyed.'
+    redirect_to project_url(project_id)
   end
 
   def show_in_table
     @task = Task.find(params[:id])
-
-    respond_to do |format|
-      format.html {render partial: 'tasks/show_in_table', locals: {task: @task}}
-    end
+    render partial: 'tasks/show_in_table', locals: {task: @task}
   end
 
   def edit_in_table
     @task = Task.find(params[:id])
-
-    respond_to do |format|
-      format.html {render partial: 'tasks/edit_in_table', locals: {task: @task}}
-    end
+    render partial: 'tasks/edit_in_table', locals: {task: @task}
   end
 
   def new_in_table
     @task = Task.new
-    respond_to do |format|
-      format.html {render partial: 'tasks/new_in_table', locals: {task: @task}}
-    end
+    render partial: 'tasks/new_in_table', locals: {task: @task}
   end
 
   def show_in_table_update
     @task = Task.find(params[:id])
-    # puts "...................................#{@task&.name}"
-    respond_to do |format|
-      if @task.update(task_params)
-        # puts "-----------------------------true"
-        format.html { render partial: 'tasks/show_in_table', locals: {task: @task}, notice: "Task was successfully updated." }
-      else
-        format.html { render partial: 'tasks/show_in_table', locals: {task: @task}, notice: "Task was not! successfully updated." }
-      end
+    if @task.update(task_params)
+      render partial: 'tasks/show_in_table', locals: {task: @task}
+    else
+      render partial: 'tasks/edit_in_table', locals: {task: @task}
     end
   end
 

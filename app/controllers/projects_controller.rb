@@ -22,74 +22,64 @@ class ProjectsController < ApplicationController
   # POST /projects or /projects.json
   def create
     @project = Project.new(project_params)
-
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
-        format.json { render :show, status: :created, location: @project }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
+    if @project.save
+      flash[:success] = "Project was successfully created."
+    else
+      flash[:error] = "Project was not! successfully created."
     end
+
+    redirect_to projects_url(@project)
   end
 
   # PATCH/PUT /projects/1 or /projects/1.json
   def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { redirect_to project_url(@project), notice: "Project was successfully updated." }
-        format.json { render :show, status: :ok, location: @project }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
+    @project = Project.find(params[:id])
+
+    if @project.update(project_params)
+      flash[:success] = "Project was successfully updated."
+    else
+      flash[:error] = "Project was not! successfully updated."
     end
+
+    redirect_to project_url(@project)
   end
 
   # DELETE /projects/1 or /projects/1.json
   def destroy
-    @project.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
-      format.json { head :no_content }
+    if @project.tasks.any?
+      flash[:error] = "Project has tasks. Delete tasks first."
+    else
+      @project.destroy!
+      flash[:success] = "Project was successfully destroyed."
     end
+
+    redirect_to projects_url
   end
 
   def show_in_table
     @project = Project.find(params[:id])
-
-    respond_to do |format|
-      format.html { render partial: 'projects/show_in_table', locals: {project: @project} }
-    end
+    render partial: 'projects/show_in_table', locals: {project: @project}
   end
 
   def edit_in_table
     @project = Project.find(params[:id])
-
-    respond_to do |format|
-      format.html { render partial: 'projects/edit_in_table', locals: {project: @project} }
-    end
+    render partial: 'projects/edit_in_table', locals: {project: @project}
   end
 
   def new_in_table
     @project = Project.new
-
-    respond_to do |format|
-      format.html { render partial: 'projects/new_in_table', locals: {project: @project} }
-    end
+    render partial: 'projects/new_in_table', locals: {project: @project}
   end
 
   def show_in_table_update
     @project = Project.find(params[:id])
 
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { render partial: 'projects/show_in_table', locals: {project: @project}, notice: "Project was successfully updated." }
-      else
-        format.html { render partial: 'projects/edit_in_table', locals: {project: @project}, notice: "Project was not! successfully updated." }
-      end
+    if @project.update(project_params)
+      # flash[:success] = "Project was successfully updated."
+      render partial: 'projects/show_in_table', locals: {project: @project}
+    else
+      # flash[:alert] = "Project was not! successfully updated."
+      render partial: 'projects/edit_in_table', locals: {project: @project}
     end
   end
 
