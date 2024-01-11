@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_11_113235) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_11_212730) do
+  create_table "file_attachments", force: :cascade do |t|
+    t.string "file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "task_id"
+    t.index ["task_id"], name: "index_file_attachments_on_task_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -47,6 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_11_113235) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "file_attachments", "tasks"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tasks", "users"
 end
