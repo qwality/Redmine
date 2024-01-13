@@ -5,10 +5,16 @@
                           method: :put,
                           'hx-swap': 'outerHTML',
                           'hx-put': show_in_table_update_user_path(user)}) do |f|
-  .col
+  .col= image_tag user.avatar.url || 'default_avatar.png', class: 'rounded-circle', style: 'width: 2rem; height: 2rem;'
   .col= f.input :email, label: false, input_html: {class: ''}
-  .col= f.input :first_name, label: false, input_html: {class: ''}
-  .col= f.input :last_name, label: false, input_html: {class: ''}
+  .col
+    - if user.admin
+      %span.badge.bg-primary.mx-2 Admin
+    - if user == current_user
+      %span.badge.bg-success.mx-2 Current
+  .col.row
+    .col= f.input :first_name, label: false, input_html: {class: ''}
+    .col= f.input :last_name, label: false, input_html: {class: ''}
   .col= f.input :address, label: false, input_html: {class: ''}
   .col
     = button_tag type: 'submit', class: 'btn btn-primary' do

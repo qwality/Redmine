@@ -7,8 +7,8 @@
                           'hx-put': show_in_table_update_project_path(project)}) do |f|
   .col= f.input :name, label: false, input_html: {class: ''}
   .col= f.input :description, label: false, input_html: {class: '', style: 'height: 1rem'}
-  .col
-  .col
+  .col= project.created_at
+  .col= project.tasks.count
   .col
     = button_tag type: 'submit', class: 'btn btn-primary' do
       %span.m-2 Update
