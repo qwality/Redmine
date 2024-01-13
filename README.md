@@ -17,6 +17,9 @@ jsou implementovany tasky i projekty, chybi pridavani souboru k taskum
   - (smazat accept nested attributes)
   - (simple_form_for) ?
 
+### issues:
+- pri prvnim loadu stranky nejde klikat na tlacitka (pravdepodobne kvuli htmx)
+
 ![Screenshot Users](screenshots/screenshot%20(4).png)
 ![Screenshot2 Users](screenshots/screenshot%20(1).png)
 ![Screenshot Users](screenshots/screenshot%20(2).png)
