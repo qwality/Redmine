@@ -16,9 +16,10 @@ jsou implementovany tasky i projekty, chybi pridavani souboru k taskum
   - ve formulari editace se pres htmx zobrazi formular pro nove tasky
   - (smazat accept nested attributes)
   - (simple_form_for) ?
+- predelat na grid a subgrid
 
 ### issues:
-- pri prvnim loadu stranky nejde klikat na tlacitka (pravdepodobne kvuli htmx)
+- ~~pri prvnim loadu stranky nejde klikat na tlacitka (pravdepodobne kvuli htmx)~~
   - opraveno.. jeste to doladim (reinicializuju htmx na celem body, ale asi by stacilo na jednom elementu)
 
 ![Screenshot Users](screenshots/screenshot%20(4).png)
