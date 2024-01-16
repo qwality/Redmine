@@ -19,8 +19,10 @@
 
     #new-task-row
       =render 'tasks/new_in_table', project: @project
-    -@project.tasks.each do |task|
+    -Task.page(@page).per(C::ITEMS_PER_PAGE).each do |task|
       =render 'tasks/show_in_table', task: task
+
+    = render 'layouts/pagination', table: Task, page: @page, path: project_path(@project)
 
   = link_to 'Edit', edit_project_path(@project)
   \|

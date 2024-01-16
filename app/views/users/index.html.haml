@@ -16,9 +16,14 @@
 
     #new-user-row
       =render 'users/new_in_table'
-    -@users.each do |user|
+    -User.page(@page).per(C::ITEMS_PER_PAGE).each do |user|
       =render 'users/show_in_table', user: user
 
+
+    = render 'layouts/pagination', table: User, page: @page, path: users_path
+
+    -# = @page
+    -# = @users.count
     = link_to 'Back', root_path
 
 :javascript

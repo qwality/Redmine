@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   end
 
   def index
+    # puts "params[:page]: #{params[:page]}"
+    @page = params[:page] || 1
     @users = User.all
   end
 

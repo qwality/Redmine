@@ -3,11 +3,13 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
+    @page = params[:page] || 1
     @projects = Project.all
   end
 
   # GET /projects/1 or /projects/1.json
   def show
+    @page = params[:page] || 1
   end
 
   # GET /projects/new

@@ -14,8 +14,10 @@
 
     #new-project-row
       =render 'projects/new_in_table'
-    -@projects.each do |project|
+    -Project.page(@page).per(C::ITEMS_PER_PAGE).each do |project|
       =render 'projects/show_in_table', project: project
+
+    = render 'layouts/pagination', table: Project, page: @page, path: projects_path
 
     = link_to 'Back', root_path
 

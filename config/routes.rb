@@ -26,6 +26,10 @@ Rails.application.routes.draw do
       get :new_in_table
       put :show_in_table_update
     end
+
+    # collection do
+    #   get 'page/:page', action: :index
+    # end
   end
   # get 'pages/home'
   # post '/custom_users', to: 'users#create', as: 'custom_users'
