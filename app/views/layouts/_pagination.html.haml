@@ -8,9 +8,9 @@
       = link_to 'Previous',
                     path + "?page=#{table.page(page).per(C::ITEMS_PER_PAGE).prev_page}",
                     class: 'page-link'
-    - table.page(page).per(C::ITEMS_PER_PAGE).total_pages.times do |page|
-      %li.page-item
-        = link_to page + 1, path + "?page=#{page + 1}", class: 'page-link'
+    - table.page(page).per(C::ITEMS_PER_PAGE).total_pages.times do |i|
+      %li.page-item{:class => i + 1 == table.page(page).per(C::ITEMS_PER_PAGE).current_page ? 'active' : ''}
+        = link_to i + 1, path + "?page=#{i + 1}", class: "page-link"
     %li.page-item
       =link_to 'Next',
                    path + "?page=#{table.page(page).per(C::ITEMS_PER_PAGE).next_page}",
