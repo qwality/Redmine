@@ -8,22 +8,14 @@
     =f.select :state, options_for_select(Task.states.keys.map { |state| [state.humanize, state] }, @task.state), {label: false}, {class: 'form-select'}
     .container
       %h3 File attachments
-
-
       .d-flex.gap-4
         - for file_attachment in @task.file_attachments
           = render 'files/destroy_file_card', f: f, file_attachment: file_attachment
 
-        = render 'files/create_file_card', f: f
-
-
-
+        = render 'files/create_file_card', f: f, file_index: 2
       %p
         =@task.file_attachments.count
     =f.button :submit, class: 'btn btn-primary'
-
-
-
 
   = link_to 'Show', @task
 

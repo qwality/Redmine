@@ -2,28 +2,25 @@
   .card-body.d-flex.gap-4.flex-column
     =f.simple_fields_for :file_attachments, FileAttachment.new do |ff|
       =ff.input :file,
-                        wrapper: false,
-                        label: false,
-                        as: :file,
-                        input_html: { id: 'create-file-file',
-                                      class: 'd-none'}
-    #create-file-name
+                wrapper: false,
+                label: false,
+                as: :file,
+                input_html: { id: "create-file-#{file_index}-file",
+                              class: 'd-none'}
+    .file-name{id: "create-file-#{file_index}-name"}
       No file selected
-    %label.btn.btn-outline-primary{ id: 'create-file-button',
-                                            for: 'create-file-file'}
+    %label.btn.btn-outline-primary{ id: "create-file-#{file_index}-button",
+                                            for: "create-file-#{file_index}-file"}
       %i.bi.bi-file-earmark-plus
       add file
 
 :javascript
   $(document).ready(()=>{
-    $('#create-file-file').on('change', (e)=>{
-      console.log('handling new file', e)
-      const file = $(e.target)
-      var file_name = file.val().split('\\').slice(-1)[0]
-      console.log(file_name)
+    $("#create-file-#{file_index}-file").on('change', (e)=>{
+      var file_name = $(e.target).val().split('\\').slice(-1)[0]
       if (file_name !== '') {
-        $('#create-file-name').text(file_name)
-        $('#create-file-button').toggleClass('btn-primary btn-outline-primary')
+        $("#create-file-#{file_index}-name").text(file_name)
+        $("#create-file-#{file_index}-button").toggleClass('btn-primary btn-outline-primary')
       }
     })
   })

@@ -1,13 +1,16 @@
 .card.outline-primary{style: 'max-width: fit-content;'}
+
+  =f.simple_fields_for :file_attachments, file_attachment do |ff|
+    =ff.input :_destroy,
+              as: :boolean,
+              wrapper: false,
+              label: false,
+              input_html: { class: 'd-none',
+                            id: "destroy-checkbox-file-#{file_attachment.id}",
+                            checked: file_attachment._destroy}
   .card-body.d-flex.gap-4.flex-column
-    =f.simple_fields_for :file_attachments, file_attachment do |ff|
-      =ff.hidden_field :_destroy,
-                          as: :boolean,
-                          label: false,
-                          input_html: { id: "destroy-checkbox-file-#{file_attachment.id}",
-                                        checked: file_attachment._destroy}
     =file_attachment.file.identifier
     %label.btn.btn-outline-danger{for: "destroy-checkbox-file-#{file_attachment.id}",
-                                            onclick: "$(event.target).toggleClass('btn-outline-danger btn-danger')"}
+                                  onclick: "$(event.target).toggleClass('btn-outline-danger btn-danger')"}
       %i.bi.bi-file-earmark-minus
       remove file
