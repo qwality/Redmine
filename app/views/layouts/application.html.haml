@@ -14,29 +14,14 @@
   %body
     %header
       = render "layouts/navbar"
-      - if flash[:notice]
-        .alert.alert-primary.alert-dismissible.fade.show.mb-0{ role: 'alert' }
-          = flash[:notice]
-          %button.btn-close{ type: 'button', 'data-bs-dismiss': 'alert', 'aria-label': 'Close' }
-      - if flash[:alert]
-        .alert.alert-warning.alert-dismissible.fade.show.mb-0{ role: 'alert' }
-          = flash[:alert]
-          %button.btn-close{ type: 'button', 'data-bs-dismiss': 'alert', 'aria-label': 'Close' }
-      - if flash[:error]
-        .alert.alert-danger.alert-dismissible.fade.show.mb-0{ role: 'alert' }
-          = flash[:error]
-          %button.btn-close{ type: 'button', 'data-bs-dismiss': 'alert', 'aria-label': 'Close' }
-      - if flash[:success]
-        .alert.alert-success.alert-dismissible.fade.show.mb-0{ role: 'alert' }
-          = flash[:success]
-          %button.btn-close{ type: 'button', 'data-bs-dismiss': 'alert', 'aria-label': 'Close' }
+      = render "layouts/alert"
 
     %main
       = yield
 
     %script{src: "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js", integrity: "sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM", crossorigin: "anonymous"}
     %script{src: "https://code.jquery.com/jquery-3.7.1.js", integrity: "sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=", crossorigin: "anonymous"}
-    %script{src: "https://unpkg.com/htmx.org@1.9.10", defer: ''}
+    %script{src: "https://unpkg.com/htmx.org@1.9.10"}
     :javascript
       $(document).ready(() => {
         htmx.process(document.body)
