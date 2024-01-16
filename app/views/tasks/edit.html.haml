@@ -8,12 +8,59 @@
     =f.select :state, options_for_select(Task.states.keys.map { |state| [state.humanize, state] }, @task.state), {label: false}, {class: 'form-select'}
     .container
       %h3 File attachments
-      =f.simple_fields_for FileAttachment.new do |ff|
-        =ff.input :file, as: :file
+      =f.simple_fields_for :file_attachments, FileAttachment.new do |ff|
+        =ff.input :file,
+                  wrapper: false,
+                  label: false,
+                  as: :file,
+                  input_html: { id: 'create-file-file',
+                                class: 'd-none'}
+
+      .d-flex.gap-4
+        - for file_attachment in @task.file_attachments
+          .card.outline-primary{style: 'max-width: fit-content;'}
+            .card-body.d-flex.gap-4.flex-column
+              =f.simple_fields_for :file_attachments, file_attachment do |ff|
+                =ff.hidden_field :_destroy,
+                          as: :boolean,
+                          label: false,
+                          input_html: { id: "destroy-checkbox-file-#{file_attachment.id}",
+                                        checked: file_attachment._destroy}
+              =file_attachment.file.identifier
+              %label.btn.btn-outline-danger{for: "destroy-checkbox-file-#{file_attachment.id}",
+                                            onclick: "$(event.target).toggleClass('btn-outline-danger btn-danger')"}
+                %i.bi.bi-file-earmark-minus
+                remove file
+        .card.outline-primary{style: 'max-width: fit-content;'}
+          .card-body.d-flex.gap-4.flex-column
+            #create-file-name
+              No file selected
+            %label.btn.btn-outline-primary{ id: 'create-file-button',
+                                            for: 'create-file-file'}
+              %i.bi.bi-file-earmark-plus
+              add file
+
+
+
       %p
         =@task.file_attachments.count
     =f.button :submit, class: 'btn btn-primary'
 
 
 
+
   = link_to 'Show', @task
+
+:javascript
+    $(document).ready(()=>{
+      $('#create-file-file').on('change', (e)=>{
+        console.log('handling new file', e)
+        const file = $(e.target)
+        var file_name = file.val().split('\\').slice(-1)[0]
+        console.log(file_name)
+        if (file_name !== '') {
+          $('#create-file-name').text(file_name)
+          $('#create-file-button').toggleClass('btn-primary btn-outline-primary')
+        }
+      })
+    })

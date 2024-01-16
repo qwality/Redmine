@@ -8,7 +8,7 @@ avatari jsou ulozeni tak ze k nim ma take pristup kdokoli (nevim jestli je to ta
 jsou implementovany tasky i projekty, chybi pridavani souboru k taskum
 
 ### todo:  
-- vyvareni a mazani itemu renderu celou stranku -> predelat na htmx
+- vytvareni a mazani itemu renderuje celou stranku -> predelat na htmx
   - delete navic musi spravne upravit pocet itemu na strance
 - strankovani
 - editace tasku
