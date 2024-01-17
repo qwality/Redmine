@@ -9,4 +9,5 @@ class FilesController < ApplicationController
   #   # render partial: 'files/create_file_card', locals: { file_index: params[:file_index], f: params[:f]}
   #   render json: { file_index: params[:file_index], f: params[:f]}
   # end
+  # 
 end
