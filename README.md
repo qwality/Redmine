@@ -10,12 +10,12 @@ jsou implementovany tasky i projekty, chybi pridavani souboru k taskum
 ### todo:  
 - vytvareni a mazani itemu renderuje celou stranku -> predelat na htmx
   - delete navic musi spravne upravit pocet itemu na strance
-- strankovani
-- editace tasku
-  - pridavani souboru k taskum
-  - ve formulari editace se pres htmx zobrazi formular pro nove tasky
-  - (smazat accept nested attributes)
-  - (simple_form_for) ?
+- ~~strankovani~~
+- ~~editace tasku~~
+  - ~~pridavani souboru k taskum~~
+  - ~~ve formulari editace se pres htmx zobrazi formular pro nove tasky~~
+    - vyreseno pres klonovani elementu
+  - ~~(smazat accept nested attributes)~~
 - predelat na grid a subgrid
 
 ### issues:
