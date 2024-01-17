@@ -1,0 +1,15 @@
+{
+  "servers": {
+    "this": {
+      "commands": {
+        "update": "git stash && git pull"
+      }
+    },
+    "rails": {
+      "commands": {
+        "run": "rails s -p 9000 -b 0.0.0.0 &",
+        "stop": "kill -9 $(lsof -i:9000 -t)"
+      }
+    }
+  }
+}
