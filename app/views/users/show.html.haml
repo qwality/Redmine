@@ -1,12 +1,21 @@
-.container.m-4
-  .d-flex.gap-4.justify-content-center.align-items-center
-    =image_tag @user.avatar.url || 'default_avatar.png', class: 'rounded-circle', style: 'width: 4rem; height: 4rem;'
-    %h2= @user.email
-  .d-flex.gap-4.justify-content-center.align-items-center
-    =@user.first_name + ' ' + @user.last_name
-  .d-flex.gap-4.justify-content-center.align-items-center
-    -@user.tasks.each do |task|
-      %p
-        task name:
-        =task.name
-  = link_to 'Back', users_path
+.container.d-flex.justify-content-center.align-items-start.my-4{style:'min-height: 100%'}
+  .card{style:'min-width: 100%'}
+    .card-header
+      .d-flex
+        .container
+          %h2.card-title
+            %span
+              =image_tag @user.avatar.url || 'default_avatar.png', class: 'rounded-circle', style: 'width: 4rem; height: 4rem;'
+              = @user.email
+          %p.card-subtitle
+            #{@user.first_name} #{@user.last_name}
+
+        = link_to users_path do
+          %i.bi.bi-people.fs-1
+
+    .card-body.d-flex.gap-4
+      %h4 Tasks:
+      -@user.tasks.each do |task|
+
+        =link_to task do
+          =task.name

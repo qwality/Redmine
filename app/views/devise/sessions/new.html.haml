@@ -1,8 +1,11 @@
-.container
-  .row.justify-content-center
-    .col-md-6
-      %h2 Log in
+.container.d-flex.justify-content-center.align-items-center.my-4{style:'min-height: 100%; max-width: fit-content;'}
+  .card{style:'min-width: 100%'}
+    .card-header
+      .card-title
+        %h2.card-title
+          Log in
 
+    .card-body
       = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         = f.error_notification
 

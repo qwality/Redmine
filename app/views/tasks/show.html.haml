@@ -1,6 +1,29 @@
-.container
-  %h2= @task.name
-  %p= @task.description
-  %p.mx-2{ class: state_badge(@task.state_before_type_cast) }
-    = @task.state
-  = link_to 'Edit', edit_task_path(@task)
+.container.d-flex.justify-content-center.align-items-start.my-4{style:'min-height: 100%'}
+  .card{style:'min-width: 100%'}
+    .card-header
+      .d-flex
+        .container
+          .card-title
+            %h2.card-title
+              =link_to @task.project do
+                %i.bi.bi-arrow-left-square
+                  back to project
+              %span.mx-3
+                >
+              %i.bi.bi-journal
+                =@task.name
+
+          %p.card-subtitle.my-4
+            =@task.description
+
+        = link_to edit_task_path(@task) do
+          %i.bi.bi-sliders.fs-1
+
+    .card-body
+      %p.mx-2{ class: state_badge(@task.state_before_type_cast) }
+        = @task.state
+      .d-flex
+        -@task.file_attachments.each do |file_attachment|
+          .container
+            %i.bi.bi-file-earmark
+            = file_attachment.file.identifier

@@ -1,13 +1,23 @@
-.container.mt-3
-  %h1 Edit project
+.container.d-flex.justify-content-center.align-items-start.my-4{style:'min-height: 100%'}
+  .card{style:'min-width: 100%'}
+    .card-header
+      .d-flex
+        .container
+          %h2.card-title
+            %i.bi.bi-sliders
+              Edit project
 
-  = simple_form_for(@project, url: project_path(@project), html: { method: :put }) do |f|
-    = f.error_notification
+        = link_to projects_path do
+          %i.bi.bi-kanban.fs-1
 
-    .form-inputs
-      = f.input :name, required: true
-      = f.input :description
-    .form-actions
-      = f.button :submit, "Update project", class: "btn btn-primary"
+    .card-body
+      = simple_form_for(@project, url: project_path(@project), html: { method: :put }) do |f|
+        = f.error_notification
 
-  = link_to 'Back', projects_path
+        .form-inputs
+          = f.input :name, required: true
+          = f.input :description
+        .form-actions
+          = f.button :submit, "Update project", class: "btn btn-primary"
+
+

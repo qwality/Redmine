@@ -1,6 +1,6 @@
 .row.mb-3{ id: "task_#{task.id}" }
   .col.border-end.border-bottom= link_to task.name, task
-  .col.border-end.border-bottom= task.description
+  .col.border-end.border-bottom{style: 'max-width: 32ch; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;'}= task.description
   .col.border-end.border-bottom= task.user ? task.user.email : 'Deleted User'
   .col.border-end.border-bottom= task.state
   .col.d-flex.gap-2

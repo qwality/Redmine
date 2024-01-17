@@ -1,36 +1,35 @@
-.container
-  %h2 Users
+.container.d-flex.justify-content-center.align-items-start.my-4{style:'min-height: 100%'}
+  .card{style:'min-width: 100%'}
+    .card-header
+      .card-title
+        %h2.card-title
+          %i.bi.bi-people
+          Users
 
-  .container
-    .row.mb-4
-      .col
-        -# avatar
-      .col.h5 Email
-      .col.h4 badges
-      .col.h4 Name
-      .col.h4 Address
-      .col
-        %button#new-user-button.btn.btn-primary
-          New user
-          %i.bi.bi-plus
+    .card-body
+      .row.mb-4
+        .col
+          -# avatar
+        .col.h5 Email
+        .col.h4 badges
+        .col.h4 Name
+        .col.h4 Address
+        .col
+          %button#new-user-button.btn.btn-primary
+            New user
+            %i.bi.bi-plus
 
-    #new-user-row
-      =render 'users/new_in_table'
-    -User.page(@page).per(C::ITEMS_PER_PAGE).each do |user|
-      =render 'users/show_in_table', user: user
+      #new-user-row
+        =render 'users/new_in_table'
+      -User.page(@page).per(C::ITEMS_PER_PAGE).each do |user|
+        =render 'users/show_in_table', user: user
 
 
-    = render 'layouts/pagination', table: User, page: @page, path: users_path
-
-    -# = @page
-    -# = @users.count
-    = link_to 'Back', root_path
+      = render 'layouts/pagination', table: User, page: @page, path: users_path
 
 :javascript
   $(document).ready(() => {
-    $('#new-user-row').hide();
+    $('#new-user-row').hide()
 
-    $('#new-user-button').click(() => {
-      $('#new-user-row').toggle();
-    });
+    $('#new-user-button').click(() => { $('#new-user-row').toggle() })
   })

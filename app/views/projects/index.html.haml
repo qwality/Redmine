@@ -1,31 +1,32 @@
-.container
-  %h2 Projects
+.container.d-flex.justify-content-center.align-items-start.my-4{style:'min-height: 100%'}
+  .card{style:'min-width: 100%'}
+    .card-header
+      .card-title
+        %h2.card-title
+          %i.bi.bi-kanban
+          Projects
 
-  .container
-    .row.mb-4
-      .col.h4 Name
-      .col.h4 Description
-      .col.h4 Created at
-      .col.h4 Tasks count
-      .col
-        %button#new-project-button.btn.btn-primary
-          New project
-          %i.bi.bi-plus
+    .card-body
+      .row.my-4
+        .col.h4 Name
+        .col.h4 Description
+        .col.h4 Created at
+        .col.h4 Tasks count
+        .col
+          %button#new-project-button.btn.btn-primary
+            New project
+            %i.bi.bi-plus
 
-    #new-project-row
-      =render 'projects/new_in_table'
-    -Project.page(@page).per(C::ITEMS_PER_PAGE).each do |project|
-      =render 'projects/show_in_table', project: project
+      #new-project-row
+        =render 'projects/new_in_table'
+      -Project.page(@page).per(C::ITEMS_PER_PAGE).each do |project|
+        =render 'projects/show_in_table', project: project
 
-    = render 'layouts/pagination', table: Project, page: @page, path: projects_path
-
-    = link_to 'Back', root_path
+      = render 'layouts/pagination', table: Project, page: @page, path: projects_path
 
 :javascript
   $(document).ready(() => {
-    $('#new-project-row').hide();
+    $('#new-project-row').hide()
 
-    $('#new-project-button').click(() => {
-      $('#new-project-row').toggle();
-    });
+    $('#new-project-button').click(() => { $('#new-project-row').toggle() })
   })

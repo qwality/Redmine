@@ -1,38 +1,40 @@
-.container
-  %h2 nazev:
-  %p=@project.name
-  %h2 popis:
-  %p=@project.description
+.container.d-flex.justify-content-center.align-items-start.my-4{style:'min-height: 100%'}
+  .card{style:'min-width: 100%'}
+    .card-header
+      .d-flex
+        .container
+          %h2.card-title
+            %i.bi.bi-kanban
+              =@project.name
+          %p.card-subtitle
+            =@project.description
 
-  %h2 Tasks:
+        = link_to edit_project_path(@project) do
+          %i.bi.bi-sliders.fs-1
 
-  .container
-    .row.mb-4
-      .col.h4  Name
-      .col.h4  Description
-      .col.h4  Solving User
-      .col.h4  State
-      .col
-        %button#new-task-button.btn.btn-primary
-          New task
-          %i.bi.bi-plus
+    .card-body
+      .row.mb-4
+        .col.h4  Name
+        .col.h4  Description
+        .col.h4  Solving User
+        .col.h4  State
+        .col
+          %button#new-task-button.btn.btn-primary
+            New task
+            %i.bi.bi-plus
 
-    #new-task-row
-      =render 'tasks/new_in_table', project: @project
-    -Task.page(@page).per(C::ITEMS_PER_PAGE).each do |task|
-      =render 'tasks/show_in_table', task: task
+      #new-task-row
+        =render 'tasks/new_in_table', project: @project
+      -Task.page(@page).per(C::ITEMS_PER_PAGE).each do |task|
+        =render 'tasks/show_in_table', task: task
 
-    = render 'layouts/pagination', table: Task, page: @page, path: project_path(@project)
+      = render 'layouts/pagination', table: Task, page: @page, path: project_path(@project)
 
-  = link_to 'Edit', edit_project_path(@project)
-  \|
-  = link_to 'Back', projects_path
+
 
 :javascript
   $(document).ready(() => {
     $('#new-task-row').hide();
 
-    $('#new-task-button').click(() => {
-      $('#new-task-row').toggle();
-    });
+    $('#new-task-button').click(() => { $('#new-task-row').toggle() })
   })
