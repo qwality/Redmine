@@ -21,6 +21,7 @@ jsou implementovany tasky i projekty, chybi pridavani souboru k taskum
 ### issues:
 - ~~pri prvnim loadu stranky nejde klikat na tlacitka (pravdepodobne kvuli htmx)~~
   - opraveno.. jeste to doladim (reinicializuju htmx na celem body, ale asi by stacilo na jednom elementu)
+- v peodukcni verzi nejde nahravat vice velkych souboru najednou
 
 ![Screenshot Users](screenshots/screenshot%20(4).png)
 ![Screenshot2 Users](screenshots/screenshot%20(1).png)
