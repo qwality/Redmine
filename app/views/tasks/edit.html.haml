@@ -6,17 +6,66 @@
     =f.input :description
     =f.select :user_id, options_for_select(User.all.map{|u| [u.email, u.id]}), {label: false}, {class: 'form-select'}
     =f.select :state, options_for_select(Task.states.keys.map { |state| [state.humanize, state] }, @task.state), {label: false}, {class: 'form-select'}
-    .container
+    .container.py-4
       %h3 File attachments
       .d-flex.gap-4
         - for file_attachment in @task.file_attachments
           = render 'files/destroy_file_card', f: f, file_attachment: file_attachment
 
-        = render 'files/create_file_card', f: f, file_index: 2
-      %p
-        =@task.file_attachments.count
+        = render 'files/create_file_card', f: f
     =f.button :submit, class: 'btn btn-primary'
 
   = link_to 'Show', @task
+
+:javascript
+  $(document).ready(()=>{
+    let original_input_element = $("#create-file-0-file")
+
+    original_input_element.on('change', e => { clone_file_card() })
+    var file_index = 1
+
+    function clone_file_card() {
+      const original = $('#create-file-0-card').first()
+      const clone = original.clone()
+
+      clone.find('#create-file-0-file')
+        .attr({
+          id: `create-file-${file_index}-file`,
+          name: `task[file_attachments_attributes][${3+file_index}][file]`
+        })
+      original.find('#create-file-0-file')
+        .val('')
+      clone.find('#create-file-0-name')
+        .attr({id: `create-file-${file_index}-name`})
+        .text('No file selected')
+      clone.find('#create-file-0-button')
+        .attr({
+          id: `create-file-${file_index}-button`,
+          for: `create-file-${file_index}-file`,
+          class: 'btn btn-outline-primary'
+        })
+
+      clone.insertBefore(original)
+
+      let local_file_index = file_index
+      let clone_input = $(`#create-file-${local_file_index}-file`)
+
+      clone_input.on('change', e => {
+        var file_name = $(e.target).val().split('\\').slice(-1)[0]
+
+        let clone_text = $(`#create-file-${local_file_index}-name`)
+        let clone_btn = $(`#create-file-${local_file_index}-button`)
+        if (file_name !== clone_text.text()) {
+          clone_text.text(file_name !== '' ? file_name : 'No file selected')
+          if (clone_btn.hasClass('btn-outline-primary') || file_name === '') {
+            clone_btn.toggleClass('btn-primary btn-outline-primary')
+          }
+        }
+      })
+      clone_input.trigger('change')
+      file_index ++
+    }
+  })
+
 
 

@@ -31,6 +31,10 @@ Rails.application.routes.draw do
     #   get 'page/:page', action: :index
     # end
   end
+  resources :files do
+    get 'create_in_card', on: :collection
+    # get 'test_endpoint', on: :collection
+  end
   # get 'pages/home'
   # post '/custom_users', to: 'users#create', as: 'custom_users'
   get 'about', to: 'pages#about'
