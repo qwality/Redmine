@@ -7,12 +7,13 @@ class UsersController < ApplicationController
 
   def authenticate_user!
     unless current_user&.is_admin? or action_whitelist.include?(action_name)
-      redirect_back(fallback_location: root_path, alert: "You must be admin to access #{action_name}")
+      # flash[:alert] = "You must be admin to access #{action_name}"
+      head :forbidden
+      # redirect_back(fallback_location: root_path, alert: "You must be admin to access #{action_name}")
     end
   end
 
   def index
-    # puts "params[:page]: #{params[:page]}"
     @page = params[:page] || 1
     @users = User.all
   end
