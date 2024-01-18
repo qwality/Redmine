@@ -2,12 +2,12 @@
   "servers": {
     "this": {
       "commands": {
-        "update": "git stash && git pull"
+        "update": "git pull"
       }
     },
     "rails": {
       "commands": {
-        "run": "rails s -p 9000 -b 0.0.0.0 &",
+        "run": "bundle install && rails db:migrate -e production && rails assets:precompile && rails s -p 9000 -b 0.0.0.0 -e production &",
         "stop": "kill -9 $(lsof -i:9000 -t)"
       }
     }
