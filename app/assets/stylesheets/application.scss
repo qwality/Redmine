@@ -1,0 +1,9 @@
+@import "bootstrap";
+
+/*
+ve formulari pridavani souboru se pouziva simpe_form checkbox,
+ktery chci schovat, ale ma nastevenou defaultni vysku
+*/
+.form-check{
+  min-height: 0;
+}

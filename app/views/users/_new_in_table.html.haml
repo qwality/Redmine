@@ -1,8 +1,10 @@
 =simple_form_for(User.new, :html => {method: :post, class: 'row' }) do |f|
   .col
   .col= f.input :email, required: true, label: false, input_html: {class: ''}
-  .col= f.input :first_name, label: false, input_html: {class: ''}
-  .col= f.input :last_name, label: false, input_html: {class: ''}
+  .col
+  .col-2
+    .col= f.input :first_name, label: false, input_html: {class: '', style: 'min-width: 16ch'}
+    .col= f.input :last_name, label: false, input_html: {class: '', style: 'min-width: 16ch'}
   .col= f.input :address, label: false, input_html: {class: ''}
   .col
     = button_tag type: 'submit', class: 'btn btn-primary' do

@@ -28,5 +28,8 @@
   $(document).ready(() => {
     $('#new-project-row').hide()
 
-    $('#new-project-button').click(() => { $('#new-project-row').toggle() })
+    $('#new-project-button').click(e => {
+      $(e.target).find('i').toggleClass('bi-plus bi-dash')
+      $('#new-project-row').toggle()
+    })
   })

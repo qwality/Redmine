@@ -4,11 +4,11 @@
       .d-flex
         .container
           .card-title
-            %h2.card-title
-              =link_to @task.project do
-                %i.bi.bi-arrow-left-square
-                  back to project
-              %span.mx-3
+            %h2.card-title.d-flex.gap-2
+              =link_to @task.project, class: ' d-flex gap-2 text-muted', style: '' do
+                %i.bi.bi-arrow-left-square.text-primary
+                =@task.project.name
+              %span
                 >
               %i.bi.bi-journal
                 =@task.name

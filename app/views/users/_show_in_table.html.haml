@@ -7,7 +7,7 @@
       %span.badge.bg-primary.mx-2 Admin
     - if user == current_user
       %span.badge.bg-success.mx-2 Current
-  .col.border-end.border-bottom #{user.first_name} #{user.last_name}
+  .col-2.border-end.border-bottom #{user.first_name} #{user.last_name}
   .col.border-end.border-bottom= user.address
   .col.d-flex.gap-2
     %button{  'class': 'btn btn-primary',

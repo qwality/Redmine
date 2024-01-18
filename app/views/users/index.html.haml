@@ -31,5 +31,8 @@
   $(document).ready(() => {
     $('#new-user-row').hide()
 
-    $('#new-user-button').click(() => { $('#new-user-row').toggle() })
+    $('#new-user-button').click(e => {
+      $(e.target).find('i').toggleClass('bi-plus bi-dash')
+      $('#new-user-row').toggle()
+    })
   })

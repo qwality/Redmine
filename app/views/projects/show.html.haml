@@ -36,5 +36,8 @@
   $(document).ready(() => {
     $('#new-task-row').hide();
 
-    $('#new-task-button').click(() => { $('#new-task-row').toggle() })
+    $('#new-task-button').click(e => {
+      $(e.target).find('i').toggleClass('bi-plus bi-dash')
+      $('#new-task-row').toggle()
+    })
   })

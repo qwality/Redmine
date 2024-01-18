@@ -12,9 +12,9 @@
       %span.badge.bg-primary.mx-2 Admin
     - if user == current_user
       %span.badge.bg-success.mx-2 Current
-  .col.row
-    .col= f.input :first_name, label: false, input_html: {class: ''}
-    .col= f.input :last_name, label: false, input_html: {class: ''}
+  .col-2
+    .col= f.input :first_name, label: false, input_html: {class: '', style: 'min-width: 16ch'}
+    .col= f.input :last_name, label: false, input_html: {class: '', style: 'min-width: 16ch'}
   .col= f.input :address, label: false, input_html: {class: ''}
   .col
     = button_tag type: 'submit', class: 'btn btn-primary' do

@@ -8,6 +8,10 @@ gem 'simple_form'
 gem 'devise'
 gem 'carrierwave'
 gem 'kaminari'
+gem 'bootstrap', '~> 5.3.2'
+# gem 'bootstrap-icons', '~> 1.0', '>= 1.0.11'
+gem 'sassc-rails'
+gem 'jquery-rails'
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

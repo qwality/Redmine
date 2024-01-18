@@ -1,3 +1,4 @@
+-# komponenta slozici jako indikační prvek pro stránkování
 %nav.d-flex.justify-content-center{'aria-label': 'Page navigation'}
   %ul.pagination
     %li.page-item
@@ -8,6 +9,7 @@
       = link_to 'Previous',
                     path + "?page=#{table.page(page).per(C::ITEMS_PER_PAGE).prev_page}",
                     class: 'page-link'
+    -# vsechny stranky
     - table.page(page).per(C::ITEMS_PER_PAGE).total_pages.times do |i|
       %li.page-item{:class => i + 1 == table.page(page).per(C::ITEMS_PER_PAGE).current_page ? 'active' : ''}
         = link_to i + 1, path + "?page=#{i + 1}", class: "page-link"
