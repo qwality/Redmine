@@ -6,9 +6,14 @@
         Home Page
     .card-body
       .d-flex.gap-4
-        %iconify-icon{icon: 'logos:rails', style: 'font-size: 8rem', class: ''}
-        %iconify-icon{icon: 'devicon:ruby-wordmark', style: 'font-size: 8rem', class: ''}
-        %iconify-icon{icon: 'skill-icons:jquery', style: 'font-size: 8rem', class: ''}
-        =image_tag 'https://daniel-sykora.cz/svelte/img/icon/technology/icon-htmx.svg', style: 'width: 8rem; height: 8rem', class: 'bg-dark p-1 rounded-4 d-block'
-      %p.mx-auto.my-4{style: 'max-width: 64ch'}
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dignissim nec eros in tincidunt. Nam ut lectus at mi pharetra maximus. Sed lobortis, urna at semper blandit, eros nunc accumsan nulla, in porttitor lacus massa sit amet felis. Nulla metus nulla, convallis id ipsum tincidunt, condimentum accumsan dui. Integer viverra eros orci, ut tincidunt nisl malesuada sit amet. Aliquam vitae venenatis magna. Morbi maximus pharetra tellus, at posuere sem malesuada sed. Nulla vestibulum ex et ex ornare, eu sagittis neque commodo. In nec ex eu diam elementum vehicula at eget libero. Duis faucibus varius magna sed sagittis. Etiam turpis nulla, iaculis a nisi vel, ultricies pellentesque sem.
+        %iconify-icon{icon: 'logos:rails', style: 'font-size: 6rem', class: ''}
+        %iconify-icon{icon: 'devicon:ruby-wordmark', style: 'font-size: 6rem', class: ''}
+        %iconify-icon{icon: 'skill-icons:jquery', style: 'font-size: 6rem', class: ''}
+        =image_tag 'https://daniel-sykora.cz/svelte/img/icon/technology/icon-htmx.svg', style: 'width: 6rem; height: 6rem', class: 'bg-dark p-1 rounded-4 d-block'
+
+        -# {style: 'max-width: 64ch'}
+
+      =link_to 'https://github.com/qwality/Redmine', class: 'd-flex flex-column my-4 text-decoration-none' do
+        %i.bi.bi-github.text-dark.d-flex.justify-content-center.align-items-center{class: '', style: 'font-size: 16rem'}
+        .text-center.text-dark.fs-1
+          odkaz na GitHub
