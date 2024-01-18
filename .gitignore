@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+/bin/rails
+/config/credentials.yml.enc
+
 # Ignore bundler config.
 /.bundle
 
