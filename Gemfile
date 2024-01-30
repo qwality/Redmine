@@ -12,6 +12,7 @@ gem 'bootstrap', '~> 5.3.2'
 # gem 'bootstrap-icons', '~> 1.0', '>= 1.0.11'
 gem 'sassc-rails'
 gem 'jquery-rails'
+gem 'faker'
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
