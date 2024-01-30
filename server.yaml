@@ -2,6 +2,7 @@ servers:
   this:
     commands:
       update: 'git pull'
+      status: 'lsof -i:9000'
   rails:
     commands:
       run: 'bundle install && RAILS_ENV=production bin/rails db:migrate && rails assets:precompile && rails s -p 9000 -b 0.0.0.0 -e production &'
