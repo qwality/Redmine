@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def index
     @page = params[:page] || 1
     @users = User.all
+    @users_on_page = User.page(@page).per(Constants::ITEMS_PER_PAGE)
   end
 
   def show

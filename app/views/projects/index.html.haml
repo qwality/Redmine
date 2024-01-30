@@ -19,7 +19,7 @@
 
       #new-project-row
         =render 'projects/new_in_table'
-      -Project.page(@page).per(C::ITEMS_PER_PAGE).each do |project|
+      -@projects_on_page.each do |project|
         =render 'projects/show_in_table', project: project
 
       = render 'layouts/pagination', table: Project, page: @page, path: projects_path

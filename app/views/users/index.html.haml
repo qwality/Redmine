@@ -21,7 +21,7 @@
 
       #new-user-row
         =render 'users/new_in_table'
-      -User.page(@page).per(C::ITEMS_PER_PAGE).each do |user|
+      -@users_on_page.each do |user|
         =render 'users/show_in_table', user: user
 
 

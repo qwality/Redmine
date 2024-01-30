@@ -5,11 +5,14 @@ class ProjectsController < ApplicationController
   def index
     @page = params[:page] || 1
     @projects = Project.all
+    @projects_on_page = Project.page(@page).per(Constants::ITEMS_PER_PAGE)
   end
 
   # GET /projects/1 or /projects/1.json
   def show
     @page = params[:page] || 1
+    @tasks_on_page = @project.tasks.page(@page).per(Constants::ITEMS_PER_PAGE)
+    # Task.page(@page).per(Constants::ITEMS_PER_PAGE)
   end
 
   # GET /projects/new
