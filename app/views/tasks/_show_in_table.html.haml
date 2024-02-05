@@ -18,3 +18,9 @@
       -if can? :destroy, task
         =button_to task_path(task), method: :delete, class: 'btn btn-danger' do
           %i.bi.bi-trash
+  -# .col.d-flex.gap-2
+  -#   = can? :edit, task
+  -#   = can? :destroy, task
+    -# = current_user.email
+    -# = task.id
+    -# = Ability.new(User.find_by(email: current_user.email)).can?(:edit, Task.find(task.id))

@@ -7,7 +7,7 @@
                           'hx-put': show_in_table_update_task_path(task)}) do |f|
   .col= f.input :name, label: false, input_html: {class: ''}
   .col= f.input :description, label: false, input_html: {class: ''}
-  .col= f.select :user_id, options_for_select(User.all.map{|u| [u.email, u.id]}), {label: false}, {class: 'form-select'}
+  .col= f.select :user_id, options_for_select(User.all.map{|u| [u.email, u.id]}, task.user_id), {label: false}, {class: 'form-select'}
   .col= f.select :state, options_for_select(Task.states.keys.map { |state| [state.humanize, state] }, task.state), {label: false}, {class: 'form-select'}
   .col
     = button_tag type: 'submit', class: 'btn btn-primary' do

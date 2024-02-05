@@ -30,7 +30,9 @@
       -@tasks_on_page.each do |task|
         =render 'tasks/show_in_table', task: task
 
-      = render 'layouts/pagination', table: Task, page: @page, path: project_path(@project)
+      -# = render 'layouts/pagination', table: Task, page: @page, path: project_path(@project)
+
+      = render 'layouts/pagination', table: @tasks_on_page, page: @page, path: project_path(@project)
 
 
 
