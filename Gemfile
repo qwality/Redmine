@@ -14,6 +14,8 @@ gem 'sassc-rails'
 gem 'jquery-rails'
 gem 'faker'
 gem 'cancancan'
+# gem 'profanity_filter'
+gem 'obscenity'
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
