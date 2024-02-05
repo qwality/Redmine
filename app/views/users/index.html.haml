@@ -14,10 +14,11 @@
         .col.h4 badges
         .col.h4 Name
         .col.h4 Address
-        .col
-          %button#new-user-button.btn.btn-primary
-            New user
-            %i.bi.bi-plus
+        -if can? :create, User
+          .col
+            %button#new-user-button.btn.btn-primary
+              New user
+              %i.bi.bi-plus
 
       #new-user-row
         =render 'users/new_in_table'

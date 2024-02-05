@@ -9,8 +9,9 @@
           %p.card-subtitle
             =@project.description
 
-        = link_to edit_project_path(@project) do
-          %i.bi.bi-sliders.fs-1
+        -if can? :update, @project
+          = link_to edit_project_path(@project) do
+            %i.bi.bi-sliders.fs-1
 
     .card-body
       .row.mb-4
@@ -18,10 +19,11 @@
         .col.h4  Description
         .col.h4  Solving User
         .col.h4  State
-        .col
-          %button#new-task-button.btn.btn-primary
-            New task
-            %i.bi.bi-plus
+        -if can? :create, Task
+          .col
+            %button#new-task-button.btn.btn-primary
+              New task
+              %i.bi.bi-plus
 
       #new-task-row
         =render 'tasks/new_in_table', project: @project

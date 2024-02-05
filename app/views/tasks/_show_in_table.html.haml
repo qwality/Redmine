@@ -3,15 +3,18 @@
   .col.border-end.border-bottom{style: 'max-width: 32ch; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;'}= task.description
   .col.border-end.border-bottom= task.user ? task.user.email : 'Deleted User'
   .col.border-end.border-bottom= task.state
-  .col.d-flex.gap-2
-    %button{  'class': 'btn btn-primary',
-              'hx-target': "#task_#{task.id}",
-              'hx-get': edit_in_table_task_path(task),
-              'hx-trigger': 'click',
-              'hx-headers': "{ 'X-CSRF-Token': '#{form_authenticity_token}' }",
-              'hx-swap': 'outerHTML'
-    }
-      %span.m-2 Edit
-      %i.bi.bi-lock
-    =button_to task_path(task), method: :delete, class: 'btn btn-danger' do
-      %i.bi.bi-trash
+  -if can? :update, task or can? :destroy, task
+    .col.d-flex.gap-2
+      -if can? :update, task
+        %button{  'class': 'btn btn-primary',
+                  'hx-target': "#task_#{task.id}",
+                  'hx-get': edit_in_table_task_path(task),
+                  'hx-trigger': 'click',
+                  'hx-headers': "{ 'X-CSRF-Token': '#{form_authenticity_token}' }",
+                  'hx-swap': 'outerHTML'
+        }
+          %span.m-2 Edit
+          %i.bi.bi-lock
+      -if can? :destroy, task
+        =button_to task_path(task), method: :delete, class: 'btn btn-danger' do
+          %i.bi.bi-trash

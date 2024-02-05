@@ -1,17 +1,17 @@
 class UsersController < ApplicationController
   
-  before_action :authenticate_user!
-
-  cattr_accessor :action_whitelist
-  self.action_whitelist = ['index']
-
-  def authenticate_user!
-    unless current_user&.is_admin? or action_whitelist.include?(action_name)
-      # flash[:alert] = "You must be admin to access #{action_name}"
-      head :forbidden
-      # redirect_back(fallback_location: root_path, alert: "You must be admin to access #{action_name}")
-    end
-  end
+  # before_action :authenticate_user!
+  #
+  # cattr_accessor :action_whitelist
+  # self.action_whitelist = ['index']
+  #
+  # def authenticate_user!
+  #   unless current_user&.is_admin? or action_whitelist.include?(action_name)
+  #     # flash[:alert] = "You must be admin to access #{action_name}"
+  #     head :forbidden
+  #     # redirect_back(fallback_location: root_path, alert: "You must be admin to access #{action_name}")
+  #   end
+  # end
 
   def index
     @page = params[:page] || 1

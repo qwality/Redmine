@@ -12,10 +12,11 @@
         .col.h4 Description
         .col.h4 Created at
         .col.h4 Tasks count
-        .col
-          %button#new-project-button.btn.btn-primary
-            New project
-            %i.bi.bi-plus
+        -if can? :create, Project
+          .col
+            %button#new-project-button.btn.btn-primary
+              New project
+              %i.bi.bi-plus
 
       #new-project-row
         =render 'projects/new_in_table'

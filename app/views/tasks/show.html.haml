@@ -16,8 +16,9 @@
           %p.card-subtitle.my-4
             =@task.description
 
-        = link_to edit_task_path(@task) do
-          %i.bi.bi-sliders.fs-1
+        -if can? :update, @task
+          = link_to edit_task_path(@task) do
+            %i.bi.bi-sliders.fs-1
 
     .card-body
       %p.mx-2{ class: state_badge(@task.state_before_type_cast) }

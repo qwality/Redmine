@@ -13,6 +13,7 @@ gem 'bootstrap', '~> 5.3.2'
 gem 'sassc-rails'
 gem 'jquery-rails'
 gem 'faker'
+gem 'cancancan'
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
