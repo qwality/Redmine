@@ -7,17 +7,17 @@
                     class: 'page-link'
     %li.page-item
       = link_to 'Previous',
-                    path + "?page=#{table.page(page).per(Constants::ITEMS_PER_PAGE).prev_page}",
+                    path + "?page=#{get_pages(table, page).prev_page}",
                     class: 'page-link'
     -# vsechny stranky
-    - table.page(page).per(Constants::ITEMS_PER_PAGE).total_pages.times do |i|
-      %li.page-item{:class => i + 1 == table.page(page).per(Constants::ITEMS_PER_PAGE).current_page ? 'active' : ''}
+    - get_pages(table, page).total_pages.times do |i|
+      %li.page-item{:class => i + 1 == get_pages(table, page).current_page ? 'active' : ''}
         = link_to i + 1, path + "?page=#{i + 1}", class: "page-link"
     %li.page-item
       =link_to 'Next',
-                   path + "?page=#{table.page(page).per(Constants::ITEMS_PER_PAGE).next_page}",
+                   path + "?page=#{get_pages(table, page).next_page}",
                    class: 'page-link'
     %li.page-item
       =link_to 'Last',
-                   path + "?page=#{table.page(page).per(Constants::ITEMS_PER_PAGE).total_pages}",
+                   path + "?page=#{get_pages(table, page).total_pages}",
                    class: 'page-link'

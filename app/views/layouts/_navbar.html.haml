@@ -3,9 +3,9 @@
   .container-fluid
     %div
       -# brand / nazev aplikace
-      %a.navbar-brand{ href: '/' } Nazev aplikace
+      = link_to 'Nazev aplikace', root_path, class: 'navbar-brand'
 
-      -# jsmeno uzivatele a jeho avatar (pokud je prihlasen) nebo informace o tom, ze neni prihlasen
+      -# jmeno uzivatele a jeho avatar (pokud je prihlasen) nebo informace o tom, ze neni prihlasen
       -# a odznacek admina (pokud je prihlasen a je admin)
       %span.navbar-text.mx-4
         - if current_user
