@@ -1,3 +1,3 @@
 module Constants
-  ITEMS_PER_PAGE = 2
+  ITEMS_PER_PAGE = 6
 end
