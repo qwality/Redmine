@@ -1,0 +1,11 @@
+.container.d-flex.justify-content-center.align-items-center{style:'min-height: 100%'}
+  .card{style: 'max-width: fit-content'}
+    .card-header
+      %h2.card-title
+        %i.bi.bi-search
+        Search
+    .card-body.d-flex.flex-column.gap-2
+      %div= @search
+      %div= @type
+      -@result.each do |result|
+        = link_to (result.try(:name) || result.email) , result
