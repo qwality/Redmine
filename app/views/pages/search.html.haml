@@ -1,11 +1,55 @@
 .container.d-flex.justify-content-center.align-items-center{style:'min-height: 100%'}
-  .card{style: 'max-width: fit-content'}
+  .card{style: 'min-width: 100%'}
     .card-header
+
       %h2.card-title
-        %i.bi.bi-search
-        Search
+        = simple_form_for :search, url: search_path, method: :get, html: {class: 'd-flex gap-2 pt-4 justify-content-center'} do |f|
+          = f.select :model, options_for_select(%w[User Task Project], @model), {label: false}, { class: 'form-select',
+                                                                                                  style: 'width: fit-content; height: fit-content;',
+                                                                                                  id: 'form_model'}
+          = f.select :attribute, options_for_select(%w[name email description first_name last_name], @attribute), {label: false}, { class: 'form-select',
+                                                                                                                                    style: 'width: fit-content; height: fit-content;',
+                                                                                                                                    id: 'form_attribute'}
+          = f.input :query, label: false,  placeholder: 'Search...', input_html: {class: '', style: 'height: fit-content;'}
+          = button_to search_path, method: :get, class: 'btn btn-primary', style: 'height: fit-content;' do
+            %span.d-flex.no-wrap.gap-2
+              %i.bi.bi-search
+              Search
+
+          -# = f.select :model, options_for_select(%w[User Task Project], @model), {label: false}, {class: 'form-select'}
+
     .card-body.d-flex.flex-column.gap-2
-      %div= @search
-      %div= @type
+      -# %div= @query
+      -# %div= @model
+      -# %div= @allowed_attributes
+      -# %div= @params
+      -if @result.present?
+        .row.my-4
+          -@model.classify.constantize.titles.each do |title|
+            .col.h4= title
+          .col.h4
+          -# .col.h4= @model.classify.constantize.titles
+          -# .col.h4 Description
+          -# .col.h4 Created at
+          -# .col.h4 Tasks count
+
       -@result.each do |result|
-        = link_to (result.try(:name) || result.email) , result
+        -# = link_to (result.try(:name) || result.email) , result
+        = render "#{@model.downcase}s/show_in_table", @model.downcase.to_sym => result
+
+:javascript
+  document.addEventListener("turbo:load", function() {
+    const allowed_attributes = JSON.parse("#{@allowed_attributes.to_json.gsub('"', "'")}".replaceAll("'", '"'))
+    const add_options = (target, options) => {
+      target.empty()
+      options?.forEach(option => {
+        target.append(`<option value="${option}">${option}</option>`)
+      })
+    }
+    const form_model = $('#form_model')
+    if( form_model) {add_options($('#form_attribute'), allowed_attributes[form_model.val()])}
+
+    form_model.on('change', e => {
+      add_options($('#form_attribute'), allowed_attributes[e.target.value])
+    })
+  })

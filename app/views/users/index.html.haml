@@ -7,13 +7,9 @@
           Users
 
     .card-body
-      .row.mb-4
-        .col
-          -# avatar
-        .col.h5 Email
-        .col.h4 badges
-        .col.h4 Name
-        .col.h4 Address
+      .row.my-4
+        -User.titles.each do |title|
+          .col.h4= title
         -if can? :create, User
           .col
             %button#new-user-button.btn.btn-primary
@@ -29,7 +25,7 @@
       = render 'layouts/pagination', table: User, page: @page, path: users_path
 
 :javascript
-  $(document).ready(() => {
+  document.addEventListener("turbo:load", function() {
     $('#new-user-row').hide()
 
     $('#new-user-button').click(e => {

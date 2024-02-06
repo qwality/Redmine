@@ -29,7 +29,7 @@
         =f.button :submit, class: 'btn btn-primary'
 
 :javascript
-  $(document).ready(()=>{
+  document.addEventListener("turbo:load", function() {
     let original_input_element = $("#create-file-0-file")
 
     original_input_element.on('change', e => { clone_file_card() })

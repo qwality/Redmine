@@ -30,4 +30,7 @@
     %script{src: "https://unpkg.com/htmx.org@1.9.10"}
 
     :javascript
-      $(document).ready(() => { htmx.process(document.body) })
+      // $(document).ready(() => { htmx.process(document.body) })
+      document.addEventListener("turbo:load", function() {
+        htmx.process(document.body)
+      });

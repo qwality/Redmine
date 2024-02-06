@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     %w[tasks]
   end
+
+  def self.titles
+    %w[avatar Email badges Name Address]
+  end
 end

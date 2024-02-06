@@ -11,4 +11,7 @@ class Project < ApplicationRecord
         %w[tasks]
     end
 
+    def self.titles
+        %w[Name Description Created Tasks]
+    end
 end

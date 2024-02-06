@@ -26,7 +26,7 @@
       = render 'layouts/pagination', table: Project, page: @page, path: projects_path
 
 :javascript
-  $(document).ready(() => {
+  document.addEventListener("turbo:load", function() {
     $('#new-project-row').hide()
 
     $('#new-project-button').click(e => {

@@ -8,10 +8,8 @@
 
     .card-body
       .row.my-4
-        .col.h4 Name
-        .col.h4 Description
-        .col.h4 Created at
-        .col.h4 Tasks count
+        -Project.titles.each do |title|
+          .col.h4= title
         -if can? :create, Project
           .col
             %button#new-project-button.btn.btn-primary
@@ -26,7 +24,7 @@
       = render 'layouts/pagination', table: Project, page: @page, path: projects_path
 
 :javascript
-  $(document).ready(() => {
+  document.addEventListener("turbo:load", function() {
     $('#new-project-row').hide()
 
     $('#new-project-button').click(e => {

@@ -14,11 +14,9 @@
             %i.bi.bi-sliders.fs-1
 
     .card-body
-      .row.mb-4
-        .col.h4  Name
-        .col.h4  Description
-        .col.h4  Solving User
-        .col.h4  State
+      .row.my-4
+        -Task.titles.each do |title|
+          .col.h4= title
         -if can? :create, Task
           .col
             %button#new-task-button.btn.btn-primary
@@ -37,7 +35,7 @@
 
 
 :javascript
-  $(document).ready(() => {
+  document.addEventListener("turbo:load", function() {
     $('#new-task-row').hide();
 
     $('#new-task-button').click(e => {
