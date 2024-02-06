@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :tasks
-  resources :projects
+  # resources :tasks
+  get 'projects/my-projects', to: 'projects#my_projects', as: 'my_projects'
+  get 'tasks/my-tasks', to: 'tasks#my_tasks', as: 'my_tasks'
+  # resources :projects
   devise_for :users, path: 'auth'
-  resources :users
+  # resources :users
   resources :tasks do
     member do
       get :show_in_table
@@ -18,7 +20,11 @@ Rails.application.routes.draw do
       get :new_in_table
       put :show_in_table_update
     end
+    # collection do
+    #   get :my_projects
+    # end
   end
+  # get 'projects#my_projects', to: 'projects#my_projects'
   resources :users do
     member do
       get :show_in_table

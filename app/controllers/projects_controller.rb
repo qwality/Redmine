@@ -1,10 +1,17 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
 
+  def my_projects
+    @page = params[:page] || 1
+    # @projects = Project.all
+    @my_projects = Project.joins(:tasks).where(tasks: {user_id: current_user.id}).distinct
+    @projects_on_page = @my_projects.page(@page).per(Constants::ITEMS_PER_PAGE)
+  end
+
   # GET /projects or /projects.json
   def index
     @page = params[:page] || 1
-    @projects = Project.all
+    # @projects = Project.all
     @projects_on_page = Project.page(@page).per(Constants::ITEMS_PER_PAGE)
   end
 

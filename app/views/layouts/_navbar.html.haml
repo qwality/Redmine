@@ -5,17 +5,7 @@
       -# brand / nazev aplikace
       = link_to 'Nazev aplikace', root_path, class: 'navbar-brand'
 
-      -# jmeno uzivatele a jeho avatar (pokud je prihlasen) nebo informace o tom, ze neni prihlasen
-      -# a odznacek admina (pokud je prihlasen a je admin)
-      %span.navbar-text.mx-4
-        - if current_user
-          = current_user.email
-          - if current_user.avatar?
-            = image_tag current_user.avatar.url, class: 'rounded-circle', style: 'width: 2rem; height: 2rem;'
-            - if current_user.admin
-              %span.badge.bg-primary.mx-2 Admin
-        - else
-          = 'No user signed in'
+
 
     -# hamburger menu pro mobilni zobrazeni
     %button.navbar-toggler{ type: 'button',
@@ -45,6 +35,28 @@
             %i.bi.bi-people
             .text-decoration-underline
               Users
+
+      -# jmeno uzivatele a jeho avatar (pokud je prihlasen) nebo informace o tom, ze neni prihlasen
+      -# a odznacek admina (pokud je prihlasen a je admin)
+      %ul.navbar-nav.gap-2.mx-4.d-flex.align-items-center
+        %li.nav-item
+          = link_to 'My projects', my_projects_path, class: 'nav-link text-decoration-underline'
+
+        %li.nav-item
+          = link_to 'My tasks', my_tasks_path, class: 'nav-link text-decoration-underline'
+
+
+        - if current_user
+          %li.nav-item= current_user.email
+          - if current_user.avatar?
+            %li.nav-item= image_tag current_user.avatar.url, class: 'rounded-circle', style: 'width: 2rem; height: 2rem;'
+            - if current_user.admin
+              %li.nav-item
+                .badge.bg-primary.mx-2 Admin
+        - else
+          %li= 'No user signed in'
+
+
 
       -# navigacni menu pro prihlaseneho uzivatele
       %ul.navbar-nav

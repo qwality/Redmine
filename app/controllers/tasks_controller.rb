@@ -9,6 +9,12 @@ class TasksController < ApplicationController
     ['badge bg-primary', 'badge bg-warning', 'badge bg-danger', 'badge bg-success'][state]
   end
 
+  def my_tasks
+    @page = params[:page].to_i
+    @my_tasks = Task.where(user_id: current_user.id)
+    @tasks_on_page = @my_tasks.page(@page).per(Constants::ITEMS_PER_PAGE)
+  end
+
   # GET /tasks or /tasks.json
   def index
     @tasks = Task.all

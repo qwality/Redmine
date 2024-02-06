@@ -1,0 +1,36 @@
+.container.d-flex.justify-content-center.align-items-start.my-4{style:'min-height: 100%'}
+  .card{style:'min-width: 100%'}
+    .card-header
+      .card-title
+        %h2.card-title
+          %i.bi.bi-kanban
+          Projects
+
+    .card-body
+      .row.my-4
+        .col.h4 Name
+        .col.h4 Description
+        .col.h4 Created at
+        .col.h4 Tasks count
+        -if can? :create, Project
+          .col
+            %button#new-project-button.btn.btn-primary
+              New project
+              %i.bi.bi-plus
+
+      #new-project-row
+        =render 'projects/new_in_table'
+      -@projects_on_page.each do |project|
+        =render 'projects/show_in_table', project: project
+
+      = render 'layouts/pagination', table: Project, page: @page, path: projects_path
+
+:javascript
+  $(document).ready(() => {
+    $('#new-project-row').hide()
+
+    $('#new-project-button').click(e => {
+      $(e.target).find('i').toggleClass('bi-plus bi-dash')
+      $('#new-project-row').toggle()
+    })
+  })

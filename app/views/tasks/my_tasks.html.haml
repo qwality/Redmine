@@ -1,0 +1,20 @@
+.container.d-flex.justify-content-center.align-items-start.my-4{style:'min-height: 100%'}
+  .card{style:'min-width: 100%'}
+    .card-header
+      .card-title
+        %h2.card-title
+          %i.bi.bi-journal
+          Tasks
+
+    .card-body
+      .row.my-4
+        .col.h4 Name
+        .col.h4 Description
+        .col.h4 Solving user
+        .col.h4 State
+        .col
+
+      -@tasks_on_page.each do |task|
+        =render 'tasks/show_in_table', task: task
+
+      = render 'layouts/pagination', table: @tasks_on_page, page: @page, path: my_tasks_path
