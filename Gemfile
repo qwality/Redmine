@@ -16,6 +16,7 @@ gem 'faker'
 gem 'cancancan'
 # gem 'profanity_filter'
 gem 'obscenity'
+gem 'ransack'
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

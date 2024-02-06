@@ -35,6 +35,11 @@
             %i.bi.bi-people
             .text-decoration-underline
               Users
+        %li.nav-item
+          = link_to search_path, class: 'nav-link d-flex gap-1' do
+            %i.bi.bi-search
+            .text-decoration-underline
+              Search
 
       -# jmeno uzivatele a jeho avatar (pokud je prihlasen) nebo informace o tom, ze neni prihlasen
       -# a odznacek admina (pokud je prihlasen a je admin)
@@ -45,7 +50,6 @@
         %li.nav-item
           = link_to 'My tasks', my_tasks_path, class: 'nav-link text-decoration-underline'
 
-
         - if current_user
           %li.nav-item= current_user.email
           - if current_user.avatar?
@@ -55,8 +59,6 @@
                 .badge.bg-primary.mx-2 Admin
         - else
           %li= 'No user signed in'
-
-
 
       -# navigacni menu pro prihlaseneho uzivatele
       %ul.navbar-nav

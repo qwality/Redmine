@@ -53,4 +53,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "pages#home"
+  get 'search', to: 'pages#search', as: 'search'
 end
