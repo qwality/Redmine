@@ -4,16 +4,16 @@
       .card-title
         %h2.card-title
           %i.bi.bi-kanban
-          Projects
+          =t(:projects)
 
     .card-body
       .row.my-4
         -Project.titles.each do |title|
-          .col.h4= title
+          .col.h4= t(title.downcase.to_s)
         -if can? :create, Project
           .col
             %button#new-project-button.btn.btn-primary
-              New project
+              =t(:new_project)
               %i.bi.bi-plus
 
       #new-project-row

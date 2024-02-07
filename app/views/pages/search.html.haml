@@ -1,20 +1,25 @@
-.container.d-flex.justify-content-center.align-items-center{style:'min-height: 100%'}
+.container.d-flex.justify-content-center.align-items-center.py-4{style:'min-height: 100%'}
   .card{style: 'min-width: 100%'}
     .card-header
 
       %h2.card-title
         = simple_form_for :search, url: search_path, method: :get, html: {class: 'd-flex gap-2 pt-4 justify-content-center'} do |f|
-          = f.select :model, options_for_select(%w[User Task Project], @model), {label: false}, { class: 'form-select',
-                                                                                                  style: 'width: fit-content; height: fit-content;',
-                                                                                                  id: 'form_model'}
-          = f.select :attribute, options_for_select(%w[name email description first_name last_name], @attribute), {label: false}, { class: 'form-select',
-                                                                                                                                    style: 'width: fit-content; height: fit-content;',
-                                                                                                                                    id: 'form_attribute'}
-          = f.input :query, label: false,  placeholder: 'Search...', input_html: {class: '', style: 'height: fit-content;'}
+          = f.select  :model,
+                      options_for_select(%w[User Task Project].map { |model| [t("#{model.downcase}s".to_s), model]}, @model),
+                      {label: false},
+                      { class: 'form-select', style: 'width: fit-content; height: fit-content;', id: 'form_model'}
+
+          -# -%w[User Task Project].map { |model| [t(model.downcase.to_s), model]}, @model
+          -#options_for_select(Task.states.keys.map { |state| [t("activerecord.enums.task.state.#{state}"), state] }, task.state)
+          = f.select  :attribute,
+                      options_for_select([], @attribute),
+                      {label: false},
+                      { class: 'form-select', style: 'width: fit-content; height: fit-content;', id: 'form_attribute'}
+          = f.input :query, label: false,  placeholder: "#{t(:search)}...", input_html: {class: '', style: 'height: fit-content;'}
           = button_to search_path, method: :get, class: 'btn btn-primary', style: 'height: fit-content;' do
             %span.d-flex.no-wrap.gap-2
               %i.bi.bi-search
-              Search
+              =t(:search)
 
           -# = f.select :model, options_for_select(%w[User Task Project], @model), {label: false}, {class: 'form-select'}
 
@@ -43,7 +48,7 @@
     const add_options = (target, options) => {
       target.empty()
       options?.forEach(option => {
-        target.append(`<option value="${option}">${option}</option>`)
+        target.append(`<option value="${option[1]}">${option[0]}</option>`)
       })
     }
     const form_model = $('#form_model')

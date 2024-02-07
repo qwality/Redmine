@@ -16,11 +16,11 @@
     .card-body
       .row.my-4
         -Task.titles.each do |title|
-          .col.h4= title
+          .col.h4= t(title.downcase.to_s)
         -if can? :create, Task
           .col
             %button#new-task-button.btn.btn-primary
-              New task
+              =t(:new_task)
               %i.bi.bi-plus
 
       #new-task-row

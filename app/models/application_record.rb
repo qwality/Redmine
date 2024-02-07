@@ -3,10 +3,11 @@ class ApplicationRecord < ActiveRecord::Base
 
   before_save :filter_profane_words
 
+  # @note pro vsechny String atributy v modelu zkontroluje, zda neobsahuji sprosta slova
   def filter_profane_words
     contains_profane_words = false
     self.attributes.each do |attribute, value|
-      if value.is_a?(String) and  Obscenity.profane?(value)
+      if value.is_a?(String) and Obscenity.profane?(value)
         errors.add(attribute, "obsahuje sprostá slova.")
         contains_profane_words = true
       end

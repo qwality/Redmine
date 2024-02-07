@@ -1,31 +1,111 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      user: "User" # Singular
+      users: "Users" # Plural
+      project: "Project"
+      projects: "Projects"
+    attributes:
+      user:
+        first_name: "First Name"
+        last_name: "Last Name"
+        email: "Email"
+        address: "Address"
+        password: "Password"
+        password_confirmation: "Password Confirmation"
+        current_password: "Current Password"
+        remember_me: "Remember Me"
+        created_at: "Created At"
+        updated_at: "Updated At"
+        admin: "Administrator"
+      project:
+        name: "Name"
+        description: "Description"
+        created_at: "Created At"
+        updated_at: "Updated At"
+      task:
+        name: "Name"
+        description: "Description"
+        state: "State"
+        created_at: "Created At"
+        updated_at: "Updated At"
+    enums:
+      task:
+        state:
+          state_new: "New"
+          state_in_progress: "In Progress"
+          state_waiting: "Waiting for Client"
+          state_completed: "Completed"
+
+
+  home: "Home"
+  projects: "Projects"
+  users: "Users"
+  search: "Search"
+
+  my_projects: "My Projects"
+  my_tasks: "My Tasks"
+
+  admin: "Admin"
+  current_user: "Current User"
+
+  edit_account: "Edit Account"
+  sign_out: "Sign Out"
+
+  task: "Task"
+  tasks: "Tasks"
+  project: "Project"
+#  projects: "Projects"
+  user: "User"
+#  users: "Users"
+
+  first_name: "First Name"
+  last_name: "Last Name"
+  email: "Email"
+  created_at: "Created"
+  updated_at: "Updated"
+  address: "Address"
+
+  name: "Name"
+  description: "Description"
+  state: "State"
+
+  new_project: "New Project"
+  new_user: "New User"
+  new_task: "New Task"
+
+  edit: "Edit"
+  update: "Update"
+  create: "Create"
+
+  first: "First"
+  previous: "Previous"
+  next: "Next"
+  last: "Last"
+
+  state_new: "New"
+  state_in_progress: "In Progress"
+  state_waiting: "Waiting for client"
+  state_completed: "Completed"
+
+  forgot_password: "Forgot your password?"
+  reset_password: "Send me reset password instructions"
+  login: "Log in"
+  sign_up: "Sign up"
+  sign_in: "Sign in"
+  cancel_my_account: "Cancel my account"
+  characters_minimum: "characters minimum"
+  leave_blank: "Leave blank if you don't want to change it"
+  we_need_current_password: "We need your current password to confirm your changes"
+
+  files: "Files"
+  add_file: "Add file"
+  remove_file: "Remove file"
+  no_file_selected: "No file selected"
+
+  no_user: "No user signed in"
+
+  created: "Created"
+  solver: "Solver"
+  badges: "Badges"
+

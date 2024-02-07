@@ -2,11 +2,11 @@
 %nav.d-flex.justify-content-center{'aria-label': 'Page navigation'}
   %ul.pagination
     %li.page-item
-      = link_to 'First',
+      = link_to t(:first),
                     path + "?page=1",
                     class: 'page-link'
     %li.page-item
-      = link_to 'Previous',
+      = link_to t(:previous),
                     path + "?page=#{get_pages(table, page).prev_page}",
                     class: 'page-link'
     -# vsechny stranky
@@ -14,10 +14,10 @@
       %li.page-item{:class => i + 1 == get_pages(table, page).current_page ? 'active' : ''}
         = link_to i + 1, path + "?page=#{i + 1}", class: "page-link"
     %li.page-item
-      =link_to 'Next',
+      =link_to t(:next),
                    path + "?page=#{get_pages(table, page).next_page}",
                    class: 'page-link'
     %li.page-item
-      =link_to 'Last',
+      =link_to t(:last),
                    path + "?page=#{get_pages(table, page).total_pages}",
                    class: 'page-link'

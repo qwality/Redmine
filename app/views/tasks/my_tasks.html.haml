@@ -4,14 +4,12 @@
       .card-title
         %h2.card-title
           %i.bi.bi-journal
-          Tasks
+          =t(:my_tasks)
 
     .card-body
       .row.my-4
-        .col.h4 Name
-        .col.h4 Description
-        .col.h4 Solving user
-        .col.h4 State
+        -Task.titles.each do |title|
+          .col.h4= t(title.downcase.to_s)
         .col
 
       -@tasks_on_page.each do |task|

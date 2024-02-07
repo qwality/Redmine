@@ -5,7 +5,7 @@
         .container
           %h2.card-title
             %i.bi.bi-sliders
-              Editing task
+              #{t(:edit)} #{t(:task)}
 
         = link_to @task do
           %i.bi.bi-journal.fs-1
@@ -20,7 +20,7 @@
         = f.label :state, 'Vyberte stav', class: 'mb-2'
         =f.select :state, options_for_select(Task.states.keys.map { |state| [state.humanize, state] }, @task.state), {}, {class: 'form-select'}
         .container.py-4
-          %h4 File attachments
+          %h4=t(:files)
           .d-flex.gap-4
             - for file_attachment in @task.file_attachments
               = render 'files/destroy_file_card', f: f, file_attachment: file_attachment

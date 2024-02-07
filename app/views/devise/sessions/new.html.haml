@@ -3,7 +3,7 @@
     .card-header
       .card-title
         %h2.card-title
-          Log in
+          =t(:login)
 
     .card-body
       = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -16,6 +16,6 @@
             = f.input :remember_me, as: :boolean
 
         .form-actions
-          = f.button :submit, "Log in", class: "btn btn-primary"
+          = f.button :submit, t(:login), class: "btn btn-primary"
 
       = render "devise/shared/links"

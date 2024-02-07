@@ -4,22 +4,23 @@
   .col.border-end.border-bottom= link_to user.email, user
   .col.border-end.border-bottom
     - if user.admin
-      %span.badge.bg-primary.mx-2 Admin
+      %span.badge.bg-primary.mx-2=t(:admin)
     - if user == current_user
-      %span.badge.bg-success.mx-2 Current
+      %span.badge.bg-success.mx-2=t(:current_user)
   .col-2.border-end.border-bottom #{user.first_name} #{user.last_name}
   .col.border-end.border-bottom= user.address
   -if can? :edit, user or can? :destroy, user
     .col.d-flex.gap-2
       -if can? :edit, user
-        %button{  'class': 'btn btn-primary',
+        %button{  'class': 'btn btn-primary d-flex nowrap align-items-center',
+                  'style': 'height: fit-content;',
                   'hx-target': "#user_#{user.id}",
                   'hx-get': edit_in_table_user_path(user),
                   'hx-trigger': 'click',
                   'hx-headers': "{ 'X-CSRF-Token': '#{form_authenticity_token}' }",
                   'hx-swap': 'outerHTML'
         }
-          %span.m-2 Edit
+          %span.mx-2= t(:edit)
           %i.bi.bi-lock
       -if can? :destroy, user
         =button_to user_path(user), method: :delete, class: 'btn btn-danger' do

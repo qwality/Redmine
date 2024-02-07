@@ -24,31 +24,31 @@
           = link_to root_path, class: 'nav-link d-flex gap-1' do
             %i.bi.bi-house
             .text-decoration-underline
-              Home
+              =t(:home)
         %li.nav-item
           = link_to projects_path, class: 'nav-link d-flex gap-1' do
             %i.bi.bi-kanban
             .text-decoration-underline
-              Projects
+              =t(:projects)
         %li.nav-item
           = link_to users_path, class: 'nav-link d-flex gap-1' do
             %i.bi.bi-people
             .text-decoration-underline
-              Users
+              =t(:users)
         %li.nav-item
           = link_to search_path, class: 'nav-link d-flex gap-1' do
             %i.bi.bi-search
             .text-decoration-underline
-              Search
+              =t(:search)
 
       -# jmeno uzivatele a jeho avatar (pokud je prihlasen) nebo informace o tom, ze neni prihlasen
       -# a odznacek admina (pokud je prihlasen a je admin)
       %ul.navbar-nav.gap-2.mx-4.d-flex.align-items-center
         %li.nav-item
-          = link_to 'My projects', my_projects_path, class: 'nav-link text-decoration-underline'
+          = link_to t(:my_projects), my_projects_path, class: 'nav-link text-decoration-underline'
 
         %li.nav-item
-          = link_to 'My tasks', my_tasks_path, class: 'nav-link text-decoration-underline'
+          = link_to t(:my_tasks), my_tasks_path, class: 'nav-link text-decoration-underline'
 
         - if current_user
           %li.nav-item= current_user.email
@@ -56,15 +56,15 @@
             %li.nav-item= image_tag current_user.avatar.url, class: 'rounded-circle', style: 'width: 2rem; height: 2rem;'
             - if current_user.admin
               %li.nav-item
-                .badge.bg-primary.mx-2 Admin
+                .badge.bg-primary.mx-2= t(:admin)
         - else
-          %li= 'No user signed in'
+          %li= t(:no_user)
 
       -# navigacni menu pro prihlaseneho uzivatele
       %ul.navbar-nav
         - if current_user
-          %li.nav-item= link_to 'Edit Account', edit_user_registration_path, class: 'nav-link'
-          %li.nav-item= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-small btn-primary mx-2'
+          %li.nav-item= link_to t(:edit_account), edit_user_registration_path, class: 'nav-link'
+          %li.nav-item= button_to t(:sign_out), destroy_user_session_path, method: :delete, class: 'btn btn-small btn-primary mx-2'
         - else
-          %li.nav-item= link_to 'Sign Up', new_user_registration_path, class: 'nav-link'
-          %li.nav-item= link_to 'Sign In', new_user_session_path, class: 'nav-link'
+          %li.nav-item= link_to t(:sign_up), new_user_registration_path, class: 'nav-link'
+          %li.nav-item= link_to t(:sign_in), new_user_session_path, class: 'nav-link'

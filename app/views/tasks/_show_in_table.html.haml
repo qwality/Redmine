@@ -2,7 +2,7 @@
   .col.border-end.border-bottom= link_to task.name, task
   .col.border-end.border-bottom{style: 'max-width: 32ch; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;'}= task.description
   .col.border-end.border-bottom= task.user ? task.user.email : 'Deleted User'
-  .col.border-end.border-bottom= task.state
+  .col.border-end.border-bottom= t("activerecord.enums.task.state.#{task.state}")
   -if can? :update, task or can? :destroy, task
     .col.d-flex.gap-2
       -if can? :update, task
@@ -13,7 +13,7 @@
                   'hx-headers': "{ 'X-CSRF-Token': '#{form_authenticity_token}' }",
                   'hx-swap': 'outerHTML'
         }
-          %span.m-2 Edit
+          %span.m-2=t(:edit)
           %i.bi.bi-lock
       -if can? :destroy, task
         =button_to task_path(task), method: :delete, class: 'btn btn-danger' do

@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
 
-  enum state: ['Novy', 'V reseni', 'Ceka se na klienta', 'Vyreseno']
+  # enum state: ['Novy', 'V reseni', 'Ceka se na klienta', 'Vyreseno']
+  enum state: %w[state_new state_in_progress state_waiting state_completed]
 
   belongs_to :user
   belongs_to :project

@@ -8,10 +8,10 @@
   .col= f.input :name, label: false, input_html: {class: ''}
   .col= f.input :description, label: false, input_html: {class: ''}
   .col= f.select :user_id, options_for_select(User.all.map{|u| [u.email, u.id]}, task.user_id), {label: false}, {class: 'form-select'}
-  .col= f.select :state, options_for_select(Task.states.keys.map { |state| [state.humanize, state] }, task.state), {label: false}, {class: 'form-select'}
+  .col= f.select :state, options_for_select(Task.states.keys.map { |state| [t("activerecord.enums.task.state.#{state}"), state] }, task.state), {label: false}, {class: 'form-select'}
   .col
     = button_tag type: 'submit', class: 'btn btn-primary' do
-      %span.m-2 Update
+      %span.m-2=t(:update)
       %i.bi.bi-unlock
 
 

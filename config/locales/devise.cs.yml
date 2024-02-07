@@ -1,0 +1,63 @@
+cs:
+  devise:
+    confirmations:
+      confirmed: "Vaše emailová adresa byla úspěšně potvrzena."
+      send_instructions: "Obdržíte email s instrukcemi, jak potvrdit vaši emailovou adresu, během několika minut."
+      send_paranoid_instructions: "Pokud vaše emailová adresa existuje v naší databázi, obdržíte email s instrukcemi, jak potvrdit vaši emailovou adresu, během několika minut."
+    failure:
+      already_authenticated: "Již jste přihlášeni."
+      inactive: "Váš účet ještě nebyl aktivován."
+      invalid: "Neplatné %{authentication_keys} nebo heslo."
+      locked: "Váš účet je uzamčen."
+      last_attempt: "Máte ještě jeden pokus, než bude váš účet uzamčen."
+      not_found_in_database: "Neplatné %{authentication_keys} nebo heslo."
+      timeout: "Vaše sezení vypršelo. Prosím, přihlaste se znovu, abyste mohli pokračovat."
+      unauthenticated: "Musíte se přihlásit nebo zaregistrovat, než budete moci pokračovat."
+      unconfirmed: "Než budete moci pokračovat, musíte potvrdit vaši emailovou adresu."
+    mailer:
+      confirmation_instructions:
+        subject: "Instrukce k potvrzení"
+      reset_password_instructions:
+        subject: "Instrukce pro obnovení hesla"
+      unlock_instructions:
+        subject: "Instrukce pro odemčení účtu"
+      email_changed:
+        subject: "Email byl změněn"
+      password_change:
+        subject: "Heslo bylo změněno"
+    omniauth_callbacks:
+      failure: "Nepodařilo se vás autentizovat pomocí %{kind} z důvodu \"%{reason}\"."
+      success: "Úspěšně autentizováno pomocí účtu %{kind}."
+    passwords:
+      no_token: "Na tuto stránku nemůžete přistupovat bez přístupu z emailu pro obnovení hesla. Pokud jste přišli z emailu pro obnovení hesla, ujistěte se, že jste použili celou poskytnutou URL."
+      send_instructions: "Obdržíte email s instrukcemi, jak resetovat vaše heslo, během několika minut."
+      send_paranoid_instructions: "Pokud vaše emailová adresa existuje v naší databázi, obdržíte na vaši emailovou adresu odkaz pro obnovu hesla během několika minut."
+      updated: "Vaše heslo bylo úspěšně změněno. Nyní jste přihlášeni."
+      updated_not_active: "Vaše heslo bylo úspěšně změněno."
+    registrations:
+      destroyed: "Sbohem! Váš účet byl úspěšně zrušen. Doufáme, že se brzy zase uvidíme."
+      signed_up: "Vítejte! Úspěšně jste se zaregistrovali."
+      signed_up_but_inactive: "Úspěšně jste se zaregistrovali. Nicméně, nemůžeme vás přihlásit, protože váš účet ještě nebyl aktivován."
+      signed_up_but_locked: "Úspěšně jste se zaregistrovali. Nicméně, nemůžeme vás přihlásit, protože váš účet je uzamčen."
+      signed_up_but_unconfirmed: "Na vaši emailovou adresu byla odeslána zpráva s odkazem pro potvrzení. Prosím, následujte odkaz pro aktivaci vašeho účtu."
+      update_needs_confirmation: "Váš účet byl úspěšně aktualizován, ale potřebujeme ověřit vaši novou emailovou adresu. Zkontrolujte prosím svůj email a následujte odkaz pro potvrzení vaší nové emailové adresy."
+      updated: "Váš účet byl úspěšně aktualizován."
+      updated_but_not_signed_in: "Váš účet byl úspěšně aktualizován, ale jelikož bylo změněno vaše heslo, musíte se znovu přihlásit."
+    sessions:
+      signed_in: "Úspěšně přihlášen."
+      signed_out: "Úspěšně odhlášen."
+      already_signed_out: "Úspěšně odhlášen."
+    unlocks:
+      send_instructions: "Obdržíte email s instrukcemi, jak odemknout váš účet, během několika minut."
+      send_paranoid_instructions: "Pokud váš účet existuje, obdržíte email s instrukcemi, jak jej odemknout, během několika minut."
+      unlocked: "Váš účet byl úspěšně odemčen. Prosím, přihlaste se pro pokračování."
+  errors:
+    messages:
+      already_confirmed: "byl již potvrzen, prosím zkuste se přihlásit"
+      confirmation_period_expired: "musí být potvrzen do %{period}, prosím požádejte o nový"
+      expired: "vypršel, prosím požádejte o nový"
+      not_found: "nenalezen"
+      not_locked: "nebyl uzamčen"
+      not_saved:
+        one: "1 chyba zabránila uložení %{resource}:"
+        other: "%{count} chyb zabránilo uložení %{resource}:"

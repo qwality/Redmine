@@ -13,10 +13,11 @@ class PagesController < ApplicationController
     @params = params
 
     @allowed_attributes = {
-      User.name => User.ransackable_attributes,
-      Task.name => Task.ransackable_attributes,
-      Project.name => Project.ransackable_attributes
+      User.name => User.ransackable_attributes.map { |i| [t("activerecord.attributes.user.#{i}"), i]},
+      Task.name => Task.ransackable_attributes.map { |i| [t("activerecord.attributes.task.#{i}"), i]},
+      Project.name => Project.ransackable_attributes.map { |i| [t("activerecord.attributes.project.#{i}"), i]}
     }
+    # %w[User Task Project].map { |model| [t("#{model.downcase}s".to_s), model]}, @model
 
     begin
       model = @model.classify.constantize

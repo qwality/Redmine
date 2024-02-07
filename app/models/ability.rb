@@ -3,6 +3,8 @@
 class Ability
   include CanCan::Ability
 
+  # @param [User] user is current_user
+  # @note authorize user to perform actions
   def initialize(user)
 
     return unless user.present?

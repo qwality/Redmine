@@ -17,6 +17,7 @@ gem 'cancancan'
 # gem 'profanity_filter'
 gem 'obscenity'
 gem 'ransack'
+gem 'rails-i18n'
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

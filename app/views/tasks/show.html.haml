@@ -22,7 +22,7 @@
 
     .card-body
       %p.mx-2{ class: state_badge(@task.state_before_type_cast) }
-        = @task.state
+        = t("activerecord.enums.task.state.#{@task.state}")
       .d-flex
         -@task.file_attachments.each do |file_attachment|
           .container

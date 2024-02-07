@@ -1,0 +1,12 @@
+cs:
+  simple_form:
+    "yes": 'Ano'
+    "no": 'Ne'
+    required:
+      text: 'požadováno'
+      mark: '*'
+      # Můžete odkomentovat řádek níže, pokud potřebujete přepsat celé požadované html.
+      # Při použití html nebudou použity text a značka.
+      # html: '<abbr title="požadováno">*</abbr>'
+    error_notification:
+      default_message: "Prosím, překontrolujte níže uvedené problémy:"

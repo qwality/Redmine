@@ -13,7 +13,7 @@
                   'hx-headers': "{ 'X-CSRF-Token': '#{form_authenticity_token}' }",
                   'hx-swap': 'outerHTML'
         }
-          %span.m-2 Edit
+          %span.m-2=t(:edit)
           %i.bi.bi-lock
       -if can? :destroy, Project
         =button_to project_path(project), method: :delete, class: 'btn btn-danger' do
