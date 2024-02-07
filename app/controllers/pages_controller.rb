@@ -1,12 +1,16 @@
 class PagesController < ApplicationController
   skip_load_and_authorize_resource only: [:home, :search]
+  # load_and_authorize_resource only: [:search]
 
   def search
+
     @query = params.dig(:search, :query) || "dsds"
     @model = params.dig(:search, :model) || "User"
     @attribute = params.dig(:search, :attribute) || "first_name"
 
-    # @q = params[:search][:query]
+
+
+                       # @q = params[:search][:query]
 
     @query = {"#{@attribute}_cont" => @query}
 
@@ -21,6 +25,11 @@ class PagesController < ApplicationController
 
     begin
       model = @model.classify.constantize
+
+      unless can? :read, model
+        @result = []
+        return
+      end
 
       @result = model.ransack(@query).result(distinct: true)
     rescue StandardError => e
