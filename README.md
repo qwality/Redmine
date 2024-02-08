@@ -31,3 +31,4 @@ avatari jsou ulozeni tak ze k nim ma take pristup kdokoli (nevim jestli je to ta
 - v produkcni verzi nejde nahravat vice velkych souboru najednou
 - ~~nalezen bug kde nonadmin uzivatel nemuze zobrazit moje-projekty (moje-ukoly funguji)~~
   - opraveno: zmena abilit
+  
