@@ -1,5 +1,5 @@
-.container.d-flex.justify-content-center.align-items-center.py-4{style:'min-height: 100%'}
-  .card{style: 'min-width: 100%'}
+.container.d-flex.justify-content-center.align-items-center.py-4.flex-column{style:'min-height: 100%'}
+  .card.mb-auto{style: 'min-width: 100%'}
     .card-header
 
       %h2.card-title
@@ -32,6 +32,7 @@
               %i.bi.bi-search
               =t(:search)
 
+  .card.mb-auto{style: 'min-width: 100%'}
     .card-body.d-flex.flex-column.gap-2
       -# %div= @query
       -# %div= @model
