@@ -31,4 +31,5 @@ avatari jsou ulozeni tak ze k nim ma take pristup kdokoli (nevim jestli je to ta
 - v produkcni verzi nejde nahravat vice velkych souboru najednou
 - ~~nalezen bug kde nonadmin uzivatel nemuze zobrazit moje-projekty (moje-ukoly funguji)~~
   - opraveno: zmena abilit
-  
+- vyhledavani tasku podle stavu funguje jenom na presne hodnoty [state_new state_in_progress state_waiting state_completed]
+
