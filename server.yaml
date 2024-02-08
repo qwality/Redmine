@@ -1,7 +1,7 @@
 servers:
   this:
     commands:
-      update: 'git stash && git pull'
+      update: 'git pull'
       status: 'lsof -i:9000'
       status_check: 'ruby'
   rails:
