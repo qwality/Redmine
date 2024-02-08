@@ -28,4 +28,5 @@ avatari jsou ulozeni tak ze k nim ma take pristup kdokoli (nevim jestli je to ta
 ### issues:
 - ~~pri prvnim loadu stranky nejde klikat na tlacitka (pravdepodobne kvuli htmx)~~
   - opraveno.. jeste to doladim (reinicializuju htmx na celem body, ale asi by stacilo na jednom elementu)
-- v peodukcni verzi nejde nahravat vice velkych souboru najednou
+- v produkcni verzi nejde nahravat vice velkych souboru najednou
+- nalezen bug kde nonadmin uzivatel nemuze zobrazit moje-projekty (moje-ukoly funguji)
