@@ -40,3 +40,4 @@
 Gemfile.lock
 /.idea/
 /public/uploads/
+/.vscode/

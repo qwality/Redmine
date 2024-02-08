@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def search
 
-    @query = params.dig(:search, :query) || "dsds"
+    @query = params.dig(:search, :query) || "dasdasd"
     @model = params.dig(:search, :model) || "User"
     @attribute = params.dig(:search, :attribute) || "first_name"
 

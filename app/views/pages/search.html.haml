@@ -3,7 +3,11 @@
     .card-header
 
       %h2.card-title
-        = simple_form_for :search, url: search_path, method: :get, html: {class: 'd-flex gap-2 pt-4 justify-content-center'} do |f|
+        = simple_form_for :search,
+                          url: search_path,
+                          method: :get,
+                          data: {turbo_frame: 'search_results'},
+                          html: {class: 'd-flex gap-2 pt-4 justify-content-center', id: 'search_form'} do |f|
           = f.select  :model,
                       options_for_select(%w[User Task Project].map { |model| [t("#{model.downcase}s".to_s), model]}, @model),
                       {label: false},
@@ -15,32 +19,38 @@
                       options_for_select([], @attribute),
                       {label: false},
                       { class: 'form-select', style: 'width: fit-content; height: fit-content;', id: 'form_attribute'}
-          = f.input :query, label: false,  placeholder: "#{t(:search)}...", input_html: {class: '', style: 'height: fit-content;'}
-          = button_to search_path, method: :get, class: 'btn btn-primary', style: 'height: fit-content;' do
+          = f.input :query,
+                    label: false,
+                    placeholder: "#{t(:search)}...",
+                    input_html: {class: '', style: 'height: fit-content;', id: 'form_query'}
+          = button_to search_path,
+                      method: :get,
+                      id: 'search_button',
+                      class: 'btn btn-primary',
+                      style: 'height: fit-content;' do
             %span.d-flex.no-wrap.gap-2
               %i.bi.bi-search
               =t(:search)
-
-          -# = f.select :model, options_for_select(%w[User Task Project], @model), {label: false}, {class: 'form-select'}
 
     .card-body.d-flex.flex-column.gap-2
       -# %div= @query
       -# %div= @model
       -# %div= @allowed_attributes
       -# %div= @params
-      -if @result.present?
-        .row.my-4
-          -@model.classify.constantize.titles.each do |title|
-            .col.h4= title
-          .col.h4
-          -# .col.h4= @model.classify.constantize.titles
-          -# .col.h4 Description
-          -# .col.h4 Created at
-          -# .col.h4 Tasks count
+      = turbo_frame_tag 'search_results' do
+        -if @result.present?
+          .row.my-4
+            -@model.classify.constantize.titles.each do |title|
+              .col.h4= title
+            .col.h4
+            -# .col.h4= @model.classify.constantize.titles
+            -# .col.h4 Description
+            -# .col.h4 Created at
+            -# .col.h4 Tasks count
 
-      -@result.each do |result|
-        -# = link_to (result.try(:name) || result.email) , result
-        = render "#{@model.downcase}s/show_in_table", @model.downcase.to_sym => result
+        -@result.each do |result|
+          -# = link_to (result.try(:name) || result.email) , result
+          = render "#{@model.downcase}s/show_in_table", @model.downcase.to_sym => result
 
 :javascript
   document.addEventListener("turbo:load", function() {
@@ -57,4 +67,16 @@
     form_model.on('change', e => {
       add_options($('#form_attribute'), allowed_attributes[e.target.value])
     })
+    
+
+    $('#form_query').on('input', e => {
+      //$('#search_form').submit()
+      //$('#search_form').trigger('submit')
+      e.preventDefault()
+      //Turbo.navigator.submitForm($('#search_form').get(0))
+      $('#search_button').click()
+      console.log(e.target.value)
+    })
+
+
   })
