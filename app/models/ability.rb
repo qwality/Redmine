@@ -14,6 +14,10 @@ class Ability
     cannot :destroy, Task
     cannot :create, Task
 
+    can :manage, Project, user_id: user.id
+    cannot :destroy, Project
+    cannot :create, Project
+
     return unless user.is_admin?
 
     can :manage, :all
