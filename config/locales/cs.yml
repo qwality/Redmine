@@ -1,111 +1,94 @@
 cs:
   activerecord:
     models:
-      user: "Uživatel" # Singulár
-      users: "Uživatelé" # Plurál
-      project: "Projekt"
-      projects: "Projekty"
+      user: Uživatel
+      users: Uživatelé
+      project: Projekt
+      projects: Projekty
     attributes:
       user:
-        first_name: "Jméno"
-        last_name: "Příjmení"
-        email: "Email"
-        address: "Adresa"
-        password: "Heslo"
-        password_confirmation: "Potvrzení hesla"
-        current_password: "Aktuální heslo"
-        remember_me: "Pamatovat si mě"
-        created_at: "Vytvořeno"
-        updated_at: "Aktualizováno"
-        admin: "Administrátor"
+        first_name: Jméno
+        last_name: Příjmení
+        email: Email
+        address: Adresa
+        password: Heslo
+        password_confirmation: Potvrzení hesla
+        current_password: Aktuální heslo
+        remember_me: Pamatovat si mě
+        created_at: Vytvořeno
+        updated_at: Aktualizováno
+        admin: Administrátor
       project:
-        name: "Název"
-        description: "Popis"
-        created_at: "Vytvořeno"
-        updated_at: "Aktualizováno"
+        name: Název
+        description: Popis
+        created_at: Vytvořeno
+        updated_at: Aktualizováno
       task:
-        name: "Název"
-        description: "Popis"
-        state: "Stav"
-        created_at: "Vytvořeno"
-        updated_at: "Aktualizováno"
+        name: Název
+        description: Popis
+        state: Stav
+        created_at: Vytvořeno
+        updated_at: Aktualizováno
     enums:
       task:
         state:
-          state_new: "Nový"
-          state_in_progress: "Probíhá"
-          state_waiting: "Čeká na klienta"
-          state_completed: "Dokončeno"
-
-  home: "Domů"
-  projects: "Projekty"
-  users: "Uživatelé"
-  search: "Hledat"
-
-  my_projects: "Moje Projekty"
-  my_tasks: "Moje Úkoly"
-
-  admin: "Administrátor"
-  current_user: "Aktuální Uživatel"
-
-  edit_account: "Upravit Účet"
-  sign_out: "Odhlásit se"
-
-  task: "Úkol"
-  tasks: "Úkoly"
-  project: "Projekt"
-  #  projects: "Projekty"
-  user: "Uživatel"
-  #  users: "Uživatelé"
-
-  first_name: "Jméno"
-  last_name: "Příjmení"
-  email: "Email"
-  created_at: "Vytvořeno"
-  updated_at: "Aktualizováno"
-  address: "Adresa"
-
-  name: "Název"
-  description: "Popis"
-  state: "Stav"
-
-  new_project: "Nový Projekt"
-  new_user: "Nový Uživatel"
-  new_task: "Nový Úkol"
-
-  edit: "Upravit"
-  update: "Aktualizovat"
-  create: "Vytvořit"
-
-
-  first: "První"
-  previous: "Předchozí"
-  next: "Další"
-  last: "Poslední"
-
-  state_new: "Nový"
-  state_in_progress: "Probíhá"
-  state_waiting: "Čeká na klienta"
-  state_completed: "Dokončeno"
-
-  forgot_password: "Zapomněli jste heslo?"
-  reset_password: "Poslat instrukce pro obnovení hesla"
-  login: "Přihlásit se"
-  sign_up: "Registrace"
-  sign_in: "Přihlásit"
-  cancel_my_account: "Zrušit můj účet"
-  characters_minimum: "minimálně znaků"
-  leave_blank: "Ponechte prázdné, pokud to nechcete měnit"
-  we_need_current_password: "Potřebujeme vaše aktuální heslo pro potvrzení změn"
-
-  files: "Soubory"
-  add_file: "Přidat soubor"
-  remove_file: "Odebrat soubor"
-  no_file_selected: "Žádný soubor nevybrán"
-
-  no_user: "Žádný uživatel není přihlášen"
-
-  created: "Vytvořeno"
-  solver: "Řešitel"
-  badges: "Odznaky"
-
+          state_new: Nový
+          state_in_progress: Probíhá
+          state_waiting: Čeká na klienta
+          state_completed: Dokončeno
+  home: Domů
+  projects: Projekty
+  users: Uživatelé
+  search: Hledat
+  my_projects: Moje Projekty
+  my_tasks: Moje Úkoly
+  admin: Administrátor
+  current_user: Aktuální Uživatel
+  edit_account: Upravit Účet
+  sign_out: Odhlásit se
+  task: Úkol
+  tasks: Úkoly
+  project: Projekt
+  user: Uživatel
+  first_name: Jméno
+  last_name: Příjmení
+  email: Email
+  created_at: Vytvořeno
+  updated_at: Aktualizováno
+  address: Adresa
+  name: Název
+  description: Popis
+  state: Stav
+  new_project: Nový Projekt
+  new_user: Nový Uživatel
+  new_task: Nový Úkol
+  edit: Upravit
+  update: Aktualizovat
+  create: Vytvořit
+  first: První
+  previous: Předchozí
+  next: Další
+  last: Poslední
+  state_new: Nový
+  state_in_progress: Probíhá
+  state_waiting: Čeká na klienta
+  state_completed: Dokončeno
+  forgot_password: Zapomněli jste heslo?
+  reset_password: Poslat instrukce pro obnovení hesla
+  login: Přihlásit se
+  sign_up: Registrace
+  sign_in: Přihlásit
+  cancel_my_account: Zrušit můj účet
+  characters_minimum: minimálně znaků
+  leave_blank: Ponechte prázdné, pokud to nechcete měnit
+  we_need_current_password: Potřebujeme vaše aktuální heslo pro potvrzení změn
+  files: Soubory
+  add_file: Přidat soubor
+  remove_file: Odebrat soubor
+  no_file_selected: Žádný soubor nevybrán
+  no_user: Žádný uživatel není přihlášen
+  created: Vytvořeno
+  solver: Řešitel
+  badges: Odznaky
+  github_link: Odkaz na github
+  home_page: Domovská stránka

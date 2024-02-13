@@ -3,7 +3,7 @@
     .card-header
       %h2.card-title
         %i.bi.bi-house
-        Home Page
+        =t(:home_page)
     .card-body
       .d-flex.gap-4
         %iconify-icon{icon: 'logos:rails', style: 'font-size: 6rem', class: 'row-sm'}
@@ -16,4 +16,4 @@
       =link_to 'https://github.com/qwality/Redmine', class: 'd-flex flex-column my-4 text-decoration-none' do
         %i.bi.bi-github.text-dark.d-flex.justify-content-center.align-items-center{class: '', style: 'font-size: 16rem'}
         .text-center.text-dark.fs-1
-          odkaz na GitHub
+          =t(:github_link)
